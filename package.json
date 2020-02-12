@@ -1,0 +1,24 @@
+{
+  "name": "featuredatingapp",
+  "version": "1.0.0",
+  "description": "A dating app for a school project",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/veerleprins/featureDatingApp.git"
+  },
+  "author": "Veerle Prins",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/veerleprins/featureDatingApp/issues"
+  },
+  "homepage": "https://github.com/veerleprins/featureDatingApp#readme",
+  "dependencies": {
+    "camelcase": "^5.3.1",
+    "express": "^4.17.1",
+    "lodash": "^4.17.15"
+  }
+}
