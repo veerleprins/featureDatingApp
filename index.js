@@ -1,7 +1,6 @@
 // const camelCase = require('camelcase');
 // console.log(camelCase('FOO-BAR'));
 
-
 // Import express package:
 const express = require('express');
 const app = express();
@@ -15,12 +14,19 @@ app.use(express.static('public'));
 app.get('/', function (req, res) {
     res.sendFile(__dirname + '/public/index.html');
 });
+// Getting about.html file:
 app.get('/about', function (req, res) {
     res.sendFile(__dirname + '/public/about.html');
 });
+// Getting contact.html file:
+app.get('/contact', function (req, res) {
+    res.sendFile(__dirname + '/public/contact.html');
+});
+// Getting 404.html file:
 app.get('/*', function (req, res) {
     res.sendFile(__dirname + '/public/404.html');
 });
+
 app.listen(PORT, () => {
     console.log(`Server is listening on port ${PORT}`);
 });
