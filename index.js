@@ -9,14 +9,17 @@ const PORT = 3000;
 
 // Using 'static' directory:
 app.use(express.static('public'));
+app.use(express.static('images'));
 
 // Getting index.html file:
 app.get('/', function (req, res) {
     res.sendFile(__dirname + '/public/index.html');
 });
 // Getting about.html file:
-app.get('/about', function (req, res) {
-    res.sendFile(__dirname + '/public/about.html');
+app.get('/about/', function (req, res) {
+    // res.sendFile(__dirname + '/public/about.html');
+    // console.log(req.query);
+    res.send(req.params)
 });
 // Getting contact.html file:
 app.get('/contact', function (req, res) {
