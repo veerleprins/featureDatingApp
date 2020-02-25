@@ -4,6 +4,9 @@
 // Import express package:
 const express = require('express');
 const app = express();
+
+app.set('view engine', 'ejs');
+
 // Using PORT 3000:
 const PORT = 3000;
 
@@ -25,6 +28,15 @@ app.get('/about/', function (req, res) {
 app.get('/contact', function (req, res) {
     res.sendFile(__dirname + '/public/contact.html');
 });
+
+// Getting dynamic page with de user's name:
+app.get('/profile/:name', function (req, res) {
+    // res.send(`Your name is: ${req.params.nameUser}`);
+    res.render('profile', {
+        person: req.params.name
+    });
+});
+
 // Getting 404.html file:
 app.get('/*', function (req, res) {
     res.sendFile(__dirname + '/public/404.html');
