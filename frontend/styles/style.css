@@ -34,7 +34,11 @@ main {
     margin: 0em 1em;
 }
 
-section:first-of-type {
+fieldset {
+    border: none;
+}
+
+section.swipeStack {
     padding: 1.5em 1.5em 1.5em 1.5em;
     background-color: #651848;
     color: white;
