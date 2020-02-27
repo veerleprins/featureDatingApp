@@ -3,10 +3,16 @@ const express = require('express');
 const app = express();
 const PORT = 3000;
 
+//Setting up handlebars template
+const hbs = require('express-handlebars');
+app.engine('handlebars', hbs());
+app.set('view engine', 'view-hbs')
+
+
 //Setting ejs:
-app.set('view engine', 'ejs');
+// app.set('view engine', 'ejs');
 //Telling ejs to get view directory:
-app.set('views', 'view-ejs');
+// app.set('views', 'view-ejs');
 
 // Using 'static' directory:
 app.use(express.static('static'));
