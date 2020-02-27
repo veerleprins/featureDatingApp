@@ -6,7 +6,7 @@ const PORT = 3000;
 //Setting ejs:
 app.set('view engine', 'ejs');
 //Telling ejs to get view directory:
-app.set('views', 'view');
+app.set('views', 'view-ejs');
 
 // Using 'static' directory:
 app.use(express.static('static'));
@@ -38,27 +38,6 @@ function error(req, res) {
     res.render('404');
 };
 
-// app.get('/', function (req, res) {
-//     res.render('index')
-// })
-
-// app.get('/about', function (req, res) {
-//     res.render('about')
-// })
-
-// app.get('/contact', function (req, res) {
-//     res.render('contact')
-// })
-
-// app.get('/profile', function (req, res) {
-//     res.render('profile');
-// })
-
-//Should always be on the bottom above app.listen:
-// app.get('/*', function (req, res) {
-//     res.render('404');
-// })
-
 // Getting dynamic page with de user's name:
 // app.get('/profile/:name', function (req, res) {
 //     // res.send(`Your name is: ${req.params.nameUser}`);
@@ -67,6 +46,7 @@ function error(req, res) {
 //     });
 // });
 
+//Server listening on given port:
 app.listen(PORT, () => {
     console.log(`Server is listening on port ${PORT}`);
 });
