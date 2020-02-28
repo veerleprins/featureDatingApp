@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/229b7397fb.js"></script>
+    <link rel="stylesheet" href="styles/style.css">
+    <title>My filters</title>
+</head>
+
+<body class="filtersPage">
+    <header>
+        <i class="fas fa-arrow-left"></i>
+        <h1>My filters</h1>
+    </header>
+    <main>
+        <section>
+            <h2>Gender:</h2>
+            <fieldset>
+                <input type="radio" name="radGender" id="genderMen" value="Men" checked="checked">
+                <label for="genderMen">Men</label>
+                <input type="radio" name="radGender" id="genderWoman" value="Woman">
+                <label for="genderWoman">Woman</label>
+                <input type="radio" name="radGender" id="genderAnything" value="Anything">
+                <label for="genderAnything">Anything</label>
+            </fieldset>
+        </section>
+        <section>
+            <h2>Age:</h2>
+            <fieldset>
+                <!-- BRON: https://www.w3schools.com/howto/howto_js_rangeslider.asp -->
+                <input type="range" id="ageSlider" name="age" min="1" max="100" value="20">
+            </fieldset>
+        </section>
+        <section>
+            <h2>Distance:</h2>
+            <fieldset>
+                <!-- BRON: https://www.w3schools.com/howto/howto_js_rangeslider.asp -->
+                <input type="range" id="distanceSlider" name="distance" min="1" max="100" value="50">
+            </fieldset>
+        </section>
+        <section>
+            <h2>Interests:</h2>
+            <form action="index.html" method="post">
+                <div>
+                    <input type="search" name="search" value="" autocomplete="off" placeholder="#actionMovies">
+                    <button>
+                        <i class="fas fa-search"></i>
+                    </button>
+                </div>
+            </form>
+            <!-- p element for the interests: -->
+            <p></p>
+        </section>
+    </main>
+</body>
+
+</html>
