@@ -10,6 +10,45 @@ body {
 }
 
 /******************************************************************************
+                            MOBILE filters header
+*******************************************************************************/
+.filtersPage header {
+    display: flex;
+    margin: 1em;
+}
+
+.filtersPage header h1 {
+    font-size: 3em;
+}
+
+.filtersPage header i {
+    font-size: 2.5em;
+    padding-top: 0.4em;
+    padding-right: 0.5em;
+}
+
+/******************************************************************************
+                            MOBILE filters main
+*******************************************************************************/
+.filtersPage main {
+    margin: 0em 1em;
+}
+
+.filtersPage main section {
+    margin: 2em 0em;
+}
+
+.filtersPage main section h2 {
+    font-size: 24px;
+    padding-bottom: 0.5em;
+}
+
+.filtersPage main section label {
+    padding-right: 2.5em;
+    font-size: 1em;
+}
+
+/******************************************************************************
                             MOBILE header
 *******************************************************************************/
 
