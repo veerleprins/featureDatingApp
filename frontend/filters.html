@@ -5,13 +5,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://kit.fontawesome.com/229b7397fb.js"></script>
-    <link rel="stylesheet" href="styles/style.css">
+    <!-- <link rel="stylesheet" href="styles/style.css"> -->
     <title>My filters</title>
 </head>
 
 <body class="filtersPage">
     <header>
-        <i class="fas fa-arrow-left"></i>
+        <a href="index.html"><i class="fas fa-arrow-left"></i></a>
         <h1>My filters</h1>
     </header>
     <main>
@@ -30,28 +30,43 @@
             <h2>Age:</h2>
             <fieldset>
                 <!-- BRON: https://www.w3schools.com/howto/howto_js_rangeslider.asp -->
-                <input type="range" id="ageSlider" name="age" min="1" max="100" value="20">
+                <!-- <label for="ageSliderMin">Min. age:</label>
+                <input type="range" id="ageSliderMin" name="age" min="18" max="100" value="20">
+
+                <label for="ageSliderMax">Max. age:</label>
+                <input type="range" id="ageSliderMax" name="age" min="18" max="100" value="20"> -->
+
+                <label for="minAge">Min. age:</label>
+                <input type="text" name="text" id="minAge" autocomplete="off" placeholder="18">
+                <label for="maxAge">Max. age:</label>
+                <input type="text" name="text" id="maxAge" autocomplete="off" placeholder="100">
             </fieldset>
         </section>
         <section>
             <h2>Distance:</h2>
             <fieldset>
                 <!-- BRON: https://www.w3schools.com/howto/howto_js_rangeslider.asp -->
-                <input type="range" id="distanceSlider" name="distance" min="1" max="100" value="50">
+                <!-- <input type="range" id="distanceSlider" name="distance" min="1" max="100" value="50"> -->
+                <label for="distance">Distance in km:</label>
+                <input type="text" name="text" id="distance" value="" autocomplete="off" placeholder="20">
             </fieldset>
         </section>
         <section>
             <h2>Interests:</h2>
             <form action="index.html" method="post">
-                <div>
+                <div class="interestBar">
                     <input type="search" name="search" value="" autocomplete="off" placeholder="#actionMovies">
                     <button>
-                        <i class="fas fa-search"></i>
+                        <!-- <i class="fas fa-search"></i> -->
+                        Submit
                     </button>
                 </div>
             </form>
             <!-- p element for the interests: -->
-            <p></p>
+        </section>
+        <section>
+            <a href=""></a>
+            <a href=""></a>
         </section>
     </main>
 </body>
