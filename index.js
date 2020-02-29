@@ -3,7 +3,6 @@ const express = require('express');
 const app = express();
 const PORT = 3000;
 
-
 //Setting ejs:
 app.set('view engine', 'ejs');
 //Telling ejs to get view directory:
@@ -35,17 +34,18 @@ function profile(req, res) {
     res.render('profile');
 };
 
-function error(req, res) {
-    res.render('404');
-};
 
-// Getting dynamic page with de user's name:
-// app.get('/profile/:name', function (req, res) {
-//     // res.send(`Your name is: ${req.params.nameUser}`);
+//Getting dynamic page with de user 's name:
+// app.get('/profile/:nameUser', function (req, res) {
+//     res.send(`Your name is: ${req.params.nameUser}`);
 //     res.render('profile', {
 //         person: req.params.name
 //     });
 // });
+
+function error(req, res) {
+    res.render('404');
+};
 
 //Server listening on given port:
 app.listen(PORT, () => {
