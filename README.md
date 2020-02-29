@@ -21,7 +21,12 @@ Then you need to install [Node.js](https://nodejs.org/en/). To know if node is i
 
 If node has been successfully installed, with this line of code you will get the installed node version that is on your computer.
 
-The last step before getting started is to download this project and open it with your code editor.
+The last step before getting started is to download this project and open it with your code editor. To do this, open your terminal with the correct path in which you want this repository. **Example**:
 
-<!-- Make sure to finish this: -->
-``` npm install express ```
+``` cd/Desktop/Repos```
+
+Then type the code below into your terminal:
+
+``` npm install ```
+
+With this line of code, you download all the packages you need for this feature!
