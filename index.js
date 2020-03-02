@@ -4,7 +4,7 @@ const app = express();
 const PORT = 3000;
 const bodyParser = require('body-parser');
 
-let jsonParser = bodyParser.json()
+//let jsonParser = bodyParser.json()
 
 let urlencodedParser = bodyParser.urlencoded({
     extended: true
@@ -43,7 +43,9 @@ app.get('/contact', contact);
 app.get('/*', error);
 
 function home(req, res) {
-    res.render('index');
+    res.render('index', {
+        data: data
+    });
 };
 
 function about(req, res) {
