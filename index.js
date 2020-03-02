@@ -3,14 +3,9 @@ const express = require('express');
 const app = express();
 const PORT = 3000;
 const bodyParser = require('body-parser');
-
-//let jsonParser = bodyParser.json()
-
-let urlencodedParser = bodyParser.urlencoded({
+const urlencodedParser = bodyParser.urlencoded({
     extended: true
 });
-
-app.use(express.static('static'));
 
 let data = [{
         id: "purge",
@@ -29,17 +24,18 @@ let data = [{
     }
 ];
 
-//Setting ejs:
+app.use(express.static('static'));
+//Setting ejs & telling to get view directory:
 app.set('view engine', 'ejs');
-//Telling ejs to get view directory:
 app.set('views', 'view-ejs');
 
-//Getting al the paths and calling the functions:
+//Getting all the paths and calling the functions:
 app.get('/', home);
 app.get('/about', about);
-app.post('/contact', urlencodedParser, postFunction);
+app.post('/succes', urlencodedParser, postFunction);
 app.get('/profile', profile);
 app.get('/contact', contact);
+// app.get('/succes', succes);
 app.get('/*', error);
 
 function home(req, res) {
@@ -60,8 +56,12 @@ function contact(req, res) {
 
 function postFunction(req, res) {
     console.log(req.body);
+    res.send('Welcome, ' + req.body.firstName);
+    // res.render('success', {
+    //     test: req.body
+    // });
     return
-}
+};
 
 function profile(req, res) {
     res.render('profile');
