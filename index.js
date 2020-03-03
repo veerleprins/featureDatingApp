@@ -32,11 +32,17 @@ app.set('views', 'view-ejs');
 //Getting all the paths and calling the functions:
 app.get('/', home);
 app.get('/about', about);
-app.post('/succes', urlencodedParser, postFunction);
 app.get('/profile', profile);
 app.get('/contact', contact);
-// app.get('/succes', succes);
 app.get('/*', error);
+
+app.post('/succes', urlencodedParser, testje);
+
+function testje(req, res) {
+    res.render('succes', {
+        test: req.body
+    });
+};
 
 function home(req, res) {
     res.render('index', {
@@ -52,15 +58,6 @@ function about(req, res) {
 
 function contact(req, res) {
     res.render('contact');
-};
-
-function postFunction(req, res) {
-    console.log(req.body);
-    res.send('Welcome, ' + req.body.firstName);
-    // res.render('success', {
-    //     test: req.body
-    // });
-    return
 };
 
 function profile(req, res) {
