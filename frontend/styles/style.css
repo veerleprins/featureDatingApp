@@ -1,12 +1,12 @@
-* {
+*, html {
     margin: 0;
     padding: 0;
 }
 
 body {
-    font-family: "Roboto", sans-serif;
-    background-color: #FFE9F7;
-    color: #651848;
+    font-family: 'Inter', sans-serif;
+    background-color: white;
+    color: black;
 }
 
 /******************************************************************************
@@ -15,24 +15,25 @@ body {
 .filtersPage header {
     display: flex;
     margin: 1em;
+    border-bottom: solid 1px #BDBDBD;
+    padding-bottom: 1em;
 }
 
 .filtersPage header h1 {
-    font-size: 3em;
-}
-
-.filtersPage header a i {
-    font-size: 2.5em;
-    padding-top: 0.4em;
-    padding-right: 0.5em;
+    font-size: 2em;
+    margin: 0 auto;
 }
 
 .filtersPage header a {
-    color: #651848;
+    color: black;
 }
 
 .filtersPage header a:active {
     color: #FFBFE7;
+}
+
+.filtersPage header a img {
+    padding-top: 0.5em;
 }
 
 /******************************************************************************
@@ -46,18 +47,62 @@ body {
     margin: 2em 0em;
 }
 
-.filtersPage main section h2 {
-    font-size: 24px;
-    padding-bottom: 0.5em;
-}
-
-.filtersPage main section label {
-    padding-right: 2.5em;
+.filtersPage main section form button { 
+    /* Save preferences button: */
+    border-radius: 0.5em;
     font-size: 1em;
+    color: white;
+    background-color:#FFA099;
+    box-shadow: 1px 1px 2px#BDBDBD;
+    border: none;
+    margin: 0 auto;
+    position: fixed;
+    bottom: 3em;
+    padding: 0.8em 1em;
+    width: 90%;
 }
 
-.filtersPage main section fieldset {
+.filtersPage main section form fieldset {
     border: none;
+    margin-bottom: 2em;
+}
+
+.filtersPage main section form fieldset label {
+    font-weight: 300;
+}
+
+.filtersPage main section form fieldset:nth-of-type(1) div {
+    display: inline-block;
+    margin-right: 13%;
+}
+
+.filtersPage main section form fieldset:nth-of-type(2) input {
+    display: block;
+    margin-bottom: 1rem;
+}
+
+.filtersPage main section form fieldset:nth-of-type(3) span {
+    font-size: 16px;
+    color: black;
+    font-weight: 300;;
+}
+
+.filtersPage main section form fieldset legend {
+    font-size: 1.5em;
+    margin-bottom: 0.5em;
+    color: black;
+    font-weight: 500;
+}
+
+.filtersPage main section form fieldset input {
+    border: solid 1px #FFA099;
+    border-radius: 0.3em;
+    padding: 0.5em;
+}
+
+.filtersPage main section form fieldset input[type="radio"] {
+    transform: scale(1.5);
+    margin-left: 0.4em;
 }
 
 
@@ -66,16 +111,22 @@ body {
 *******************************************************************************/
 
 .swipe header {
-    margin: 0em 1em 1em 1em;
+    margin: 1em 1em 0.5em 1em;
 }
 
-.swipe header img:first-of-type {
-    height: 10%;
-    width: 10%;
+.swipe header ul {
+    display: flex;
+    justify-content: space-between;
 }
 
-.titleH1 {
+.swipe header ul li {
+    list-style-type: none;
+    text-decoration: none;
+}
+
+.swipe header ul li:first-of-type {
     visibility: hidden;
+    position: absolute;
 }
 
 /******************************************************************************
@@ -86,41 +137,107 @@ body {
     margin: 0em 1em;
 }
 
-.swipe fieldset {
-    border: none;
+.swipe section {}
+
+.swipe section figure {
 }
 
-.swipe section.swipeStack {
-    padding: 1.5em 1.5em 1.5em 1.5em;
-    background-color: #651848;
-    color: white;
-    border-radius: 1em;
-}
-
-.swipe section:first-of-type img {
+.swipe section figure img {
     width: 100%;
-    height: 80%;
-    border-radius: 1em;
+    border-radius: 8px 8px 0px 0px;
+    height: 23em;
+    object-fit: cover;
+    /* margin: 0 auto; */
 }
 
-/* .swipe section:nth-of-type(2) i {
-    width: 5%;
-    height: 5%;
-} */
+.swipe section figure a {
+    background-color: #FFE9F7;
+    color: black;
+    font-weight: 300;
+    border-radius: 0.2em;
+    padding: 0.2em;
+    text-decoration: none;
+    position: absolute;
+    left: 2.5rem;
+    top: 25rem;
+}
+
+.swipe section figure a:nth-of-type(2) {
+    top: 23rem;
+}
+.swipe section figure figcaption {
+    margin-top: -1rem;
+    padding-top: 2rem;
+    width: 100%;
+    background-color: black;
+    color: white;
+    text-align: center;
+    border-radius: 0px 0px 8px 8px;
+}
+
+.swipe section figure figcaption h2 {
+    font-size: 1.5em;
+}
+
+.swipe section figure figcaption h3 {
+    font-weight: 300;
+    font-size: 1em;
+}
+
+.swipe section figure figcaption form {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    margin: 1em 0em;
+}
+
+.swipe section figure figcaption form button {    
+    width: 7em;
+    height: 7em;
+    border-radius: 50%;
+    margin: 0em 1.5em 2em 1.5em;
+}
+
+.swipe section figure figcaption form button i {
+    font-size: 4em;
+    color: black;
+}
+
+.swipe section figure figcaption form button i #heartButton {
+    color: white;
+}
+
 
 /******************************************************************************
                             MOBILE index & swipeAfter footer
 *******************************************************************************/
 
 .swipe footer {
-    background-color: #651848;
-    border-radius: 5px;
-    padding: 1em;
+    /* background-color: #ffcdec; */
+    background-color: #FFE3F5;
+    box-shadow: black;
+    border-radius: 1em 1em 0em 0em;
+    padding: 0.5em 0em;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
 }
 
-.swipe footer a i {
-    font-size: 2em;
-    padding: 0.5em;
-    color: White;
+.swipe footer ul {
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 
+.swipe footer ul li {
+    list-style-type: none;
+    text-decoration: none;
+}
+
+.swipe footer ul li a i {
+    text-align: center;
+    font-size: 2rem;
+    color: black;
+    padding: 0.5rem 2.2rem;
 }
