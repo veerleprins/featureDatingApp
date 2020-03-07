@@ -5,7 +5,8 @@
 
 body {
     font-family: 'Inter', sans-serif;
-    background-color: white;
+    background: rgb(235,235,235);
+    background: linear-gradient(270deg, rgba(235,235,235,1) 0%, rgba(255,255,255,1) 100%, rgba(255,255,255,1) 100%);
     color: black;
 }
 
@@ -139,18 +140,18 @@ body {
 
 .swipe section figure img {
     width: 100%;
-    border-radius: 8px 8px 0px 0px;
-    height: 23em;
+    border-radius: 1em;
+    /* height: 25em; */
     object-fit: cover;
     /* margin: 0 auto; */
 }
 
 .swipe section figure a {
-    background-color: #FFE9F7;
-    color: black;
+    background-color: #DCABA7;
+    color: white;
     font-weight: 300;
     border-radius: 0.2em;
-    padding: 0.2em;
+    padding: 0.3em;
     text-decoration: none;
     position: absolute;
     left: 2.5rem;
@@ -161,13 +162,14 @@ body {
     top: 23rem;
 }
 .swipe section figure figcaption {
+    position: relative;
     margin-top: -1rem;
     padding-top: 2rem;
     width: 100%;
     background-color: black;
     color: white;
     text-align: center;
-    border-radius: 0px 0px 8px 8px;
+    border-radius: 0em 0em 1em 1em;
 }
 
 .swipe section figure figcaption h2 {
@@ -193,15 +195,6 @@ body {
     margin: 0em 1.5em 2em 1.5em;
 }
 
-.swipe section figure figcaption form button i {
-    font-size: 4em;
-    color: black;
-}
-
-.swipe section figure figcaption form button i #heartButton {
-    color: white;
-}
-
 
 /******************************************************************************
                             MOBILE index & swipeAfter footer
@@ -209,7 +202,7 @@ body {
 
 .swipe footer {
     /* background-color: #ffcdec; */
-    background-color: #FFE3F5;
+    background-color: white;
     box-shadow: black;
     border-radius: 1em 1em 0em 0em;
     padding: 0.5em 0em;
@@ -221,7 +214,7 @@ body {
 .swipe footer ul {
     margin: 0;
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
 }
 
@@ -230,7 +223,7 @@ body {
     text-decoration: none;
 }
 
-.swipe footer ul li a i {
+.swipe footer ul li a img {
     text-align: center;
     font-size: 2rem;
     color: black;
