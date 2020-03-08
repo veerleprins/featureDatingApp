@@ -1,18 +1,28 @@
-*, html {
+*,
+html {
     margin: 0;
     padding: 0;
 }
 
 body {
     font-family: 'Inter', sans-serif;
-    background: rgb(235,235,235);
-    background: linear-gradient(270deg, rgba(235,235,235,1) 0%, rgba(255,255,255,1) 100%, rgba(255,255,255,1) 100%);
+    /* background: rgb(235,235,235); */
+    /* background: linear-gradient(bottom, rgba(235,235,235,1) 0%, rgba(255,255,255,1) 100%, rgba(255,255,255,1) 100%); */
+    /* background-image: linear-gradient(to bottom, rgba(255, 255, 255, 1), rgba(220, 220, 220, 1)); */
+    /* height: 90vh; */
+    background: url('../images/background.png') no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
     color: black;
 }
 
+
 /******************************************************************************
-                            MOBILE filters header
+                          MOBILE filters header
 *******************************************************************************/
+
 .filtersPage header {
     display: flex;
     margin: 1em;
@@ -37,23 +47,25 @@ body {
     padding-top: 0.5em;
 }
 
+
 /******************************************************************************
-                            MOBILE filters main
+                          MOBILE filters main
 *******************************************************************************/
+
 .filtersPage main {
     margin: 0em 1em;
 }
 
 .filtersPage main section {
-    margin: 2em 0em;
+    margin: 0.5em 0em;
 }
 
-.filtersPage main section form button { 
+.filtersPage main section form button {
     /* Save preferences button: */
     border-radius: 0.5em;
     font-size: 1em;
     color: white;
-    background-color:#FFA099;
+    background-color: #DCABA7;
     box-shadow: 1px 1px 2px#BDBDBD;
     border: none;
     margin: 0 auto;
@@ -65,7 +77,7 @@ body {
 
 .filtersPage main section form fieldset {
     border: none;
-    margin-bottom: 2em;
+    margin-bottom: 1em;
 }
 
 .filtersPage main section form fieldset label {
@@ -74,18 +86,27 @@ body {
 
 .filtersPage main section form fieldset:nth-of-type(1) div {
     display: inline-block;
-    margin-right: 13%;
+    margin-right: 8%;
+}
+
+.filtersPage main section form fieldset:nth-of-type(2) label {
+    display: block;
+    margin-bottom: 0.3em;
 }
 
 .filtersPage main section form fieldset:nth-of-type(2) input {
     display: block;
-    margin-bottom: 1rem;
+}
+
+.filtersPage main section form fieldset:nth-of-type(2) input:nth-of-type(1) {
+    margin-bottom: 0.5em;
 }
 
 .filtersPage main section form fieldset:nth-of-type(3) span {
     font-size: 16px;
     color: black;
-    font-weight: 300;;
+    font-weight: 300;
+    ;
 }
 
 .filtersPage main section form fieldset legend {
@@ -96,7 +117,7 @@ body {
 }
 
 .filtersPage main section form fieldset input {
-    border: solid 1px #FFA099;
+    border: solid 1px #DCABA7;
     border-radius: 0.3em;
     padding: 0.5em;
 }
@@ -108,7 +129,7 @@ body {
 
 
 /******************************************************************************
-                            MOBILE index & swipeAfter header
+                          MOBILE index & swipeAfter header
 *******************************************************************************/
 
 .swipe header {
@@ -130,23 +151,52 @@ body {
     position: absolute;
 }
 
+.swipe header ul li:nth-of-type(2) {
+    margin-left: 1em;
+}
+
+.swipe header ul li:nth-of-type(3) {
+    margin-right: 1em;
+}
+
+
 /******************************************************************************
-                            MOBILE index & swipeAfter main
+                          MOBILE index & swipeAfter main
 *******************************************************************************/
 
 .swipe main {
     margin: 0em 1em;
 }
 
-.swipe section figure img {
+.swipe section {
+    margin-top: 1em;
+    border-radius: 1em;;
+    box-shadow: 4px 4px 8px grey;
+}
+
+.swipe section figure {
+    height: 75vh;
+    position: relative;
+}
+
+.swipe section figure img:nth-last-of-type(1) {
     width: 100%;
+    height: 100%;
     border-radius: 1em;
     /* height: 25em; */
     object-fit: cover;
-    /* margin: 0 auto; */
+    margin: 0 auto;
 }
 
 .swipe section figure a {
+    width: 24px;
+    height: 24px;
+    position: absolute;
+    left: 1em;
+    top: 1em;
+}
+
+.swipe section figure p {
     background-color: #DCABA7;
     color: white;
     font-weight: 300;
@@ -154,19 +204,21 @@ body {
     padding: 0.3em;
     text-decoration: none;
     position: absolute;
-    left: 2.5rem;
-    top: 25rem;
+    left: 1rem;
+    bottom: 11rem;
 }
 
-.swipe section figure a:nth-of-type(2) {
-    top: 23rem;
+.swipe section figure p:nth-of-type(2) {
+    bottom: 9rem;
 }
+
 .swipe section figure figcaption {
-    position: relative;
+    position: absolute;
+    z-index: 1;
+    bottom: 0;
     margin-top: -1rem;
-    padding-top: 2rem;
     width: 100%;
-    background-color: black;
+    background-image: linear-gradient(to top, rgba(0, 0, 0, 1), rgba(0, 0, 0, .1));
     color: white;
     text-align: center;
     border-radius: 0em 0em 1em 1em;
@@ -181,23 +233,35 @@ body {
     font-size: 1em;
 }
 
+.swipe section figure figcaption h3 i {
+    height: 16px;
+    width: auto;
+    margin-right: 0.5em;
+    margin-top: 0.2em;
+}
+
 .swipe section figure figcaption form {
     width: 100%;
     display: flex;
     justify-content: space-between;
-    margin: 1em 0em;
+    margin-bottom: 1em;
 }
 
-.swipe section figure figcaption form button {    
-    width: 7em;
-    height: 7em;
-    border-radius: 50%;
-    margin: 0em 1.5em 2em 1.5em;
+.swipe section figure figcaption form div {
+    width: 50%;
 }
+
+.swipe section figure figcaption form button {
+    width: 5em;
+    height: 5em;
+    border-radius: 50%;
+    margin: 0 auto;
+}
+
 
 
 /******************************************************************************
-                            MOBILE index & swipeAfter footer
+                          MOBILE index & swipeAfter footer
 *******************************************************************************/
 
 .swipe footer {
