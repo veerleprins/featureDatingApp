@@ -1,7 +1,7 @@
 // Import express package:
 const express = require('express');
 const app = express();
-const PORT = 3000;
+const PORT = 2000;
 const bodyParser = require('body-parser');
 const urlencodedParser = bodyParser.urlencoded({
  extended: true
@@ -28,6 +28,7 @@ let myObj = [{
   name: ""
 }, {name: ""}, {name: ""}];
 
+
 app.use(express.static('static'));
 //Setting ejs & telling to get view directory:
 app.set('view engine', 'ejs');
@@ -36,7 +37,6 @@ app.set('views', 'view-ejs');
 //Getting all the paths and calling the functions:
 app.get('/', home);
 app.get('/filters', filters);
-// app.get('/swipeAfter', after);
 app.get('/test1', sendMovies);
 app.get('/about', about);
 app.get('/profile', profile);
@@ -44,8 +44,7 @@ app.get('/contact', contact);
 app.get('/*', error);
 
 app.post('/succes', urlencodedParser, testje);
-
-app.post('/swipeAfter', urlencodedParser, postPreferences);
+app.post('/indexafter', urlencodedParser, postPreferences);
 
 function testje(req, res) {
   myObj.push({name: req.body.firstName})
@@ -54,8 +53,8 @@ function testje(req, res) {
   })};
 
 function postPreferences(req, res) {
-  res.render('swipeAfter', {
-    preference: req.body
+  res.render('indexafter', {
+    preferences: req.body
   })};
 
 
