@@ -2,11 +2,8 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="https://kit.fontawesome.com/229b7397fb.js"></script>
-    <link rel="stylesheet" href="styles/style.css">
-    <title>My filters</title>
+    <%- include ("partials/head.ejs") %> 
+    <title>loveback | Filters</title>
 </head>
 
 <body class="filtersPage">
@@ -16,7 +13,7 @@
     </header>
     <main>
         <section>
-            <form action="/swipeAfter" method="POST">
+            <form action="/indexafter" method="POST">
                 <fieldset>
                     <legend>Gender:</legend>
                     <div>
@@ -34,8 +31,6 @@
                 </fieldset>
                 <fieldset>
                     <legend>Age:</legend>
-                    <input type="range" id="ageSliderMax" name="age" min="18" max="100" value="20"> -->
-
                     <label for="minAge">Min. age:</label>
                     <input type="text" name="text" id="minAge" autocomplete="off" placeholder="18">
                     <label for="maxAge">Max. age:</label>
