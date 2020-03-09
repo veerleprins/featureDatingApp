@@ -136,6 +136,10 @@ body {
     border-radius: 0.3em;
     padding: 0.5em;
 }
+
+.filtersPage main section form fieldset input:nth-of-type(7) {
+    opacity: 0;
+}
 .filtersPage main section form fieldset input[type="radio"] {
     transform: scale(1.5);
     margin-left: 0.4em;
