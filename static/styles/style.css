@@ -64,13 +64,14 @@ body {
     /* Save preferences button: */
     border-radius: 0.5em;
     font-size: 1em;
+    font-weight: 400;
     color: white;
     background-color: #DCABA7;
-    box-shadow: 1px 1px 2px#BDBDBD;
+    box-shadow: 1px 1px 2px #8C8C8C;
     border: none;
     margin: 0 auto;
     position: fixed;
-    bottom: 3em;
+    bottom: 1.5em;
     padding: 0.8em 1em;
     width: 90%;
 }
@@ -116,12 +117,25 @@ body {
     font-weight: 500;
 }
 
-.filtersPage main section form fieldset input {
+.filtersPage main section form fieldset select {
+    font-size: 1em;
     border: solid 1px #DCABA7;
     border-radius: 0.3em;
     padding: 0.5em;
+    margin-bottom: 10em;
 }
 
+.filtersPage main section form fieldset select:focus, input:focus {
+    outline: none;
+}
+
+.filtersPage main section form fieldset input {
+    font-size: 1em;
+    border: solid 1px #DCABA7;
+    background-color: white;
+    border-radius: 0.3em;
+    padding: 0.5em;
+}
 .filtersPage main section form fieldset input[type="radio"] {
     transform: scale(1.5);
     margin-left: 0.4em;
