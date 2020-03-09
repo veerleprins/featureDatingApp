@@ -27,6 +27,13 @@ let myObj = [{
 }, {name: ""}, {name: ""}];
 
 
+let Jack = person('Jack Hughes', 'Man', '23', 'York, England', 'comedyMovies');
+let Noah = person('Noah Adams', 'Man', '25', 'York, England', 'comedyMovies');
+let Liam = person('Liam Smith', 'Man', '22', 'York, England', 'adventureMovies');
+let James = person('James Brown', 'Man', '23', 'York, England', 'actionMovies');
+
+let users = [Jack, Noah, Liam, James];
+
 app.use(express.static('static'));
 //Setting ejs & telling to get view directory:
 app.set('view engine', 'ejs');
@@ -49,10 +56,37 @@ app.post('/indexafter', urlencodedParser, postFilters);
 //     test: req.body.firstName
 //   })};
 
+function person(letName, letGender, letAge, letLocation, letMovies){
+  return {name: letName, gender: letGender, 
+    age: letAge, location: letLocation, 
+    genre: letMovies};
+}
+
+
+function filters(req, res){
+  res.render('/', {
+    preferences: req.body
+  });
+}
+
 function postFilters (req, res){
-  console.log(req.body)
+  let usersFiltered =  {sorted: []};
+  for (const user of users) {
+    if (req.body.movies === user.genre) {
+      usersFiltered.sorted.push(user);
+    }console.log(usersFiltered);
+    // console.log(user.genre);
+  };
+  // for (let i; i < users.length; i++){
+  //   console.log(i);
+  // }
+
+  // console.log(obj.users);
+  // if (req.body.movies === obj.users.genre) {
+  //   console.log(obj.users.genre);
+  // }
   res.render('indexafter', {
-    interests: req.body
+    preferences: usersFiltered.sorted[0]
   });
 }
 
