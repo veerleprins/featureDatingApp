@@ -21,11 +21,11 @@
             <figure>
                 <img src="images/boy.png" alt="image person">
                 <a href="" class="info"><img src="images/info.svg" alt=""></a>
-                <p>#PopMusic</p>
+                <p>#<%= preferences.genre %></p>
                 <p>#ActionMovies</p>
                 <figcaption>
-                    <h2>Jack Hughes, 23</h2>
-                    <h3> <i class="fas fa-map-marker-alt"></i> Location</h3>
+                    <h2><%= preferences.name %> , <%= preferences.age %> </h2>
+                    <h3> <i class="fas fa-map-marker-alt"></i> <%= preferences.location %> </h3>
                     <form action="/">
                         <button><img src="images/noLikeButton.svg" alt="No like"></button>
                         <div></div>
