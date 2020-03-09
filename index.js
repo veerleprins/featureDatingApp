@@ -1,11 +1,9 @@
 // Import express package:
 const express = require('express');
 const app = express();
-const PORT = 2000;
+const PORT = 3000;
 const bodyParser = require('body-parser');
-const urlencodedParser = bodyParser.urlencoded({
- extended: true
-});
+const urlencodedParser = bodyParser.urlencoded({extended: true});
 
 let data = [{
  id: 'purge',
@@ -38,33 +36,39 @@ app.set('views', 'view-ejs');
 app.get('/', home);
 app.get('/filters', filters);
 app.get('/test1', sendMovies);
-app.get('/about', about);
-app.get('/profile', profile);
-app.get('/contact', contact);
 app.get('/*', error);
 
-app.post('/succes', urlencodedParser, testje);
-app.post('/indexafter', urlencodedParser, postPreferences);
+// app.post('/succes', urlencodedParser, testje);
+app.post('/indexafter', urlencodedParser, postFilters);
 
-function testje(req, res) {
-  myObj.push({name: req.body.firstName})
-  res.render('succes', {
-    test: req.body.firstName
-  })};
+// app.post('/filters_test', urlencodedParser, postFilters);
 
-function postPreferences(req, res) {
+// function testje(req, res) {
+//   myObj.push({name: req.body.firstName})
+//   res.render('succes', {
+//     test: req.body.firstName
+//   })};
+
+function postFilters (req, res){
+  console.log(req.body)
   res.render('indexafter', {
-    preferences: req.body
-  })};
+    interests: req.body
+  });
+}
 
+// function postPreferences(req, res) {
+//   res.render('indexafter', {
+//     preferences: req.body
+//   })
+// };
 
 function home(req, res) {
   res.render('index');
-}
+};
 
 function filters(req, res) {
   res.render('filters');
-}
+};
 
 function sendMovies(req, res) {
  res.render('test1', {
@@ -72,32 +76,9 @@ function sendMovies(req, res) {
  });
 }
 
-function about(req, res) {
- res.render('about', {
-  data: data
- });
-}
-
-function contact(req, res) {
- res.render('contact');
-}
-
-function profile(req, res) {
- res.render('profile');
-}
-
-
-//Getting dynamic page with de user 's name:
-// app.get('/profile/:nameUser', function (req, res) {
-//     res.send(`Your name is: ${req.params.nameUser}`);
-//     res.render('profile', {
-//         person: req.params.name
-//     });
-// });
-
 function error(req, res) {
  res.render('404');
-}
+};
 
 //Server listening on given port:
 app.listen(PORT, () => {
