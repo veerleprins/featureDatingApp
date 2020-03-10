@@ -11,6 +11,14 @@ This schoolproject consists of creating a feature for an online dating applicati
 ## Getting started
 To start, you must have a *code editor* installed on your computer. For this project (and most of my projects) I used [Visual Studio Code](https://code.visualstudio.com/download). But you can also use [Atom](https://atom.io/), for example.
 
+Then you need to Connect Git and GitHub in the terminal. This can be done by opening the terminal and typing the next line of code and pressing enter:
+
+```git config --global user.name "type here your user name"```
+
+```git config --global user.email "type here your user email"```
+
+This information is the same as you used to sign up for GitHub.
+
 Then you need to install nvm to install Node. nvm can be installed by typing the following line of code in terminal and pressing enter:
 
 ```curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.8/install.sh ```
