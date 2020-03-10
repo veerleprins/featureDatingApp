@@ -19,13 +19,16 @@
     <main>
         <section>
             <figure>
-                <img src="images/JackHughes.png" alt="image person">
+                <img src="images/<%= preferences[0].picture %> " alt="image person">
                 <a href="" class="info"><img src="images/info.svg" alt=""></a>
-                <p>#PopMusic</p>
-                <p>#ActionMovies</p>
+                <% if (preferences[0].genres[1] != undefined) {%>
+                <p>#<%= preferences[0].genres[1] %></p>
+                <% } %> 
+                <p>#<%= preferences[0].genres[0] %></p>
+                <!-- <p>#ActionMovies</p> -->
                 <figcaption>
-                    <h2>Jack Hughes, 23</h2>
-                    <h3> <i class="fas fa-map-marker-alt"></i> Location</h3>
+                    <h2><%= preferences[0].name %> , <%= preferences[0].age %> </h2>
+                    <h3> <i class="fas fa-map-marker-alt"></i> <%= preferences[0].location %> </h3>
                     <form action="/">
                         <button><img src="images/noLikeButton.svg" alt="No like"></button>
                         <div></div>
