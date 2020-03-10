@@ -4,22 +4,28 @@ This schoolproject consists of creating a feature for an online dating applicati
 
 ## Needed for this feature:
 - Code editor
-- Node.js
 - knowledge of JavaScript
 - knowledge of HTML & CSS
 - little bit of knowledge of command line
-- npm installed
-- homebrew installed
-- express installed
 
 ## Getting started
 To start, you must have a *code editor* installed on your computer. For this project (and most of my projects) I used [Visual Studio Code](https://code.visualstudio.com/download). But you can also use [Atom](https://atom.io/), for example.
 
-Then you need to install [Node.js](https://nodejs.org/en/). To know if node is installed on your computer, you can open the terminal or command prompt and enter the next code:
+Then you need to install nvm to install Node. nvm can be installed by typing the following line of code in terminal and pressing enter:
+```curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.8/install.sh ```
 
-``` node -v ```
+If nvm has been successfully installed, you can check the version by typing the following line of code in the terminal and pressing enter:
 
-If node has been successfully installed, with this line of code you will get the installed node version that is on your computer.
+```nvm --version```
+
+Then you need to close and re-open the terminal and type the following line of code:
+
+```nvm install stable ```
+
+Now, both Node and npm (node packaging manager) are installed. You can check it by typing the next line of code in the terminal to get the versions of node and npm:
+
+```node -v```
+```npm -v```
 
 The last step before getting started is to download this project and open it with your code editor. To do this, open your terminal with the correct path in which you want this repository. **Example**:
 
@@ -29,4 +35,4 @@ Then type the code below into your terminal:
 
 ``` npm install ```
 
-With this line of code, you download all the packages you need for this feature!
+With this line of code, you download all the packages (like express) you need for this feature!
