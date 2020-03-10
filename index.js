@@ -60,6 +60,8 @@ let usersData = [{
 }];
 
 app.use(express.static('static'));
+app.use(bodyParser.urlencoded({ extended: true }));
+
 //Setting ejs & telling to get view directory:
 app.set('view engine', 'ejs');
 app.set('views', 'view-ejs');
@@ -71,7 +73,7 @@ app.get('/test1', sendMovies);
 app.get('/*', error);
 
 // app.post('/succes', urlencodedParser, testje);
-app.post('/indexafter', urlencodedParser, postFilters);
+app.post('/', postFilters);
 
 // app.post('/filters_test', urlencodedParser, postFilters);
 
@@ -87,7 +89,14 @@ function filters(req, res){
   });
 }
 
+function home(req, res) {
+  res.render('index', {
+    preferences: usersData
+  });
+};
+
 function postFilters (req, res){
+  //BRON : https://developer.mozilla.org/nl/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach
   // New way :
   if (req.body.movies === undefined) {
     res.render('404');
@@ -101,7 +110,7 @@ function postFilters (req, res){
       }
     }
   });
-  res.render('indexafter', {
+  res.render('index', {
     preferences: usersFiltered.sorted
   });
   }
@@ -111,10 +120,6 @@ function postPreferences(req, res) {
   res.render('indexafter', {
     preferences: req.body
   })
-};
-
-function home(req, res) {
-  res.render('index');
 };
 
 function filters(req, res) {
