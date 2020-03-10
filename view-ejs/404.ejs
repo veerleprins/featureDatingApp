@@ -2,14 +2,16 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="styles/style.css">
+    <%- include ("partials/head.ejs") %> 
     <title>Page not found</title>
 </head>
 
-<body>
-    <h1>Page not found.</h1>
+<body class="swipe">
+    <header>
+        <%- include ("partials/header.ejs") %> 
+    </header>
+    <p>Oeps! Something went wrong...</p>
+    <%- include ("partials/footer.ejs") %> 
 </body>
 
 </html>

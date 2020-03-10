@@ -42,23 +42,25 @@
                 </fieldset>
                 <fieldset>
                     <legend>Movie genres:</legend>
-                    <select name="movies" id="">
-                        <option value="" disabled selected>--Please choose an option</option>
-                        <option value="actionMovies">#actionMovies</option>
-                        <option value="adventureMovies">#adventureMovies</option>
-                        <option value="comedyMovies">#comedyMovies</option>
-                        <!-- <option value="dramaMovies">#dramaMovies</option>
-                        <option value="horrorMovies">#horrorMovies</option>
-                        <option value="fantasyMovies">#fantasyMovies</option>
-                        <option value="romanceMovies">#romanceMovies</option>
-                        <option value="disneyMovies">#disneyMovies</option> -->
-                    </select>
-                    <input type="hidden" name="inputfield">
+                    <div class="selectbox">
+                        <select name="movies" id="">
+                            <option value="" disabled selected>--Please choose an option</option>
+                            <option value="actionMovies">#actionMovies</option>
+                            <option value="adventureMovies">#adventureMovies</option>
+                            <option value="comedyMovies">#comedyMovies</option>
+                            <!-- <option value="dramaMovies">#dramaMovies</option>
+                            <option value="horrorMovies">#horrorMovies</option>
+                            <option value="fantasyMovies">#fantasyMovies</option>
+                            <option value="romanceMovies">#romanceMovies</option>
+                            <option value="disneyMovies">#disneyMovies</option> -->
+                        </select>
+                    </div>
+                    <!-- <input type="hidden" name="inputfield"> -->
                     <!-- <div class="interestBar">
                         <input type="search" name="search" value="" autocomplete="off" placeholder="#actionMovies">
                     </div> -->
                 </fieldset>
-                <button>
+                <button id="Submit">
                     Save preferences
                 </button>
             </form>
