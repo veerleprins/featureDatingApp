@@ -12,6 +12,7 @@ This schoolproject consists of creating a feature for an online dating applicati
 To start, you must have a *code editor* installed on your computer. For this project (and most of my projects) I used [Visual Studio Code](https://code.visualstudio.com/download). But you can also use [Atom](https://atom.io/), for example.
 
 Then you need to install nvm to install Node. nvm can be installed by typing the following line of code in terminal and pressing enter:
+
 ```curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.8/install.sh ```
 
 If nvm has been successfully installed, you can check the version by typing the following line of code in the terminal and pressing enter:
@@ -35,4 +36,4 @@ Then type the code below into your terminal:
 
 ``` npm install ```
 
-With this line of code, you download all the packages (like express) you need for this feature!
+With this line of code, you download all the packages (like express) you need for this feature! :raised_hands:
