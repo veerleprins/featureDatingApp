@@ -1,9 +1,20 @@
 // Import express package:
 const express = require('express');
+const bodyParser = require('body-parser');
+const mongo = require('mongodb');
 const app = express();
 const PORT = 3000;
-const bodyParser = require('body-parser');
 const urlencodedParser = bodyParser.urlencoded({extended: true});
+
+require('dotenv').config();
+
+var db = null;
+var url = 'mongodb://' + process.env.DB_HOST + ':' + process.env.DB_PORT
+
+mongo.MongoClient.connect(url, function (err, client){
+  if (err) throw err
+  db = client.db(process.env.DB_NAME)
+});
 
 let data = [{
  id: 'purge',
