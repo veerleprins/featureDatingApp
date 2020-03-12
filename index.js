@@ -9,7 +9,7 @@ const urlencodedParser = bodyParser.urlencoded({extended: true});
 require('dotenv').config();
 
 var db = null;
-var url = 'mongodb://' + process.env.DB_HOST + ':' + process.env.DB_PORT
+var url = process.env.DB_HOST + ':' + process.env.DB_PORT
 
 mongo.MongoClient.connect(url, function (err, client){
   if (err) throw err
