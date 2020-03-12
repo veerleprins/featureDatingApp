@@ -2,6 +2,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const mongo = require('mongodb');
+const slug = require('slug');
 const app = express();
 const PORT = 3000;
 const urlencodedParser = bodyParser.urlencoded({extended: true});
@@ -95,6 +96,7 @@ app.post('/', postFilters);
 //   })};
 
 function filters(req, res){
+  let data = slug(req.body);
   res.render('/', {
     preferences: req.body
   });
