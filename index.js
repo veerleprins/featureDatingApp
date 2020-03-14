@@ -10,11 +10,12 @@ const urlencodedParser = bodyParser.urlencoded({extended: true});
 require('dotenv').config();
 
 var db = null;
-var url = process.env.DB_HOST + ':' + process.env.DB_PORT
+var uri = process.env.DB_HOST + ':' + process.env.DB_PORT
 
-mongo.MongoClient.connect(url, function (err, client){
+mongo.MongoClient.connect(uri, { useUnifiedTopology: true }, function (err, client){
   if (err) throw err
   db = client.db(process.env.DB_NAME)
+  console.log('Database is connected...');
 });
 
 let data = [{
