@@ -9,6 +9,7 @@ const PORT = 3000;
 const urlencodedParser = bodyParser.urlencoded({extended: true});
 
 let usersCollection = null;
+let idThisUser = 1;
 let db = null;
 let uri = process.env.DB_HOST + ':' + process.env.DB_PORT;
 
@@ -94,18 +95,10 @@ let usersData = [{
 }
 ];
 
-// let data = JSON.stringify(usersData);
-// console.log(data);
-
 
 // Search for own user:
 let obj = usersData.find(obj => obj.id == 1);
 console.log(obj);
-
-
-//Remove own user from allUsers: 
-let allUsers = usersData
-allUsers.splice(0, 1);
 
 // const objArray = [
 //   { id: 0, name: 'Object 0', otherProp: '321' },
@@ -142,9 +135,20 @@ function filters(req, res){
 }
 
 function home(req, res) {
-  res.render('index', {
-    users: allUsers
-  });
+  let allUsers;
+  usersCollection.find().toArray(done)
+  function done(err, users) {
+    //Get the index of the user that's logged in: 
+    let index = users.findIndex(p => p.id === idThisUser);
+    //Remove own user from allUsers: 
+    allUsers = users;
+    allUsers.splice(index, 1);
+      if (err) {
+          next(err);
+      } else {
+          res.render('index.ejs', { users: allUsers });
+      }
+  }
 };
 
 function test(req, res) {
@@ -160,6 +164,21 @@ function test(req, res) {
 };
 
 function postFilters (req, res){
+  console.log('this works');
+  usersCollection.find().toArray(done);
+
+
+  function done(err, users) {
+      if (err) {
+          next(err);
+      } else {
+        console.log('Data is seen');
+        console.log('_______________');
+        console.log(users);
+          // databaseUsers = users;
+          // res.render('probeersel.ejs', { users: users });
+      }
+  }
   // let f = usersData[0]["pref"];
   // console.log(f);
   let filters = thisUser["pref"];
