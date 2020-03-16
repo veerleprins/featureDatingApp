@@ -66,12 +66,12 @@ body {
     font-size: 1em;
     font-weight: 400;
     color: white;
-    background-color: #DCABA7;
-    box-shadow: 1px 1px 2px #8C8C8C;
+    background-color: #FF8484;
+    box-shadow: 1px 1px 2px rgb(49, 49, 49);
     border: none;
     margin: 0 auto;
     position: fixed;
-    bottom: 1.5em;
+    bottom: 4em;
     padding: 0.8em 1em;
     width: 90%;
 }
@@ -188,6 +188,14 @@ body {
     margin: 0em 1em;
 }
 
+.swipe main ul li {
+    list-style-type: none;
+}
+
+.swipe main ul li:last-of-type {
+    margin-bottom: 5em;
+}
+
 .swipe section {
     margin-top: 1em;
     border-radius: 1em;;
@@ -293,6 +301,7 @@ body {
     border-radius: 1em 1em 0em 0em;
     padding: 0.5em 0em;
     position: fixed;
+    z-index: 1000;
     bottom: 0;
     width: 100%;
 }
