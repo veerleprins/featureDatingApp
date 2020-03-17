@@ -2,6 +2,10 @@
 
 This schoolproject consists of creating a feature for an online dating application. Within the project, it was decided to create a **filter** feature. Later in the project there is a collaboration with other students to add other features to a fully functioning dating app. To read the entire process of creating this filter feature and creating the functioning dating application, you can go to my [wiki](https://github.com/veerleprins/featureDatingApp/wiki).
 
+## Job story
+*When I sit on the couch at home with my phone in my hands, I want to be able to filter on the movie preferences of my possible matches, so that I don't have a fight in the future about which movie genre we're going to watch (for example on Netflix).*
+
+
 <img width="250" alt="Screenshot 2020-03-17 at 14 41 11" src="https://user-images.githubusercontent.com/35265583/76861775-642adf80-685d-11ea-9f19-bea6d7879213.png"> <img width="250" alt="Screenshot 2020-03-17 at 14 37 34" src="https://user-images.githubusercontent.com/35265583/76861441-e8c92e00-685c-11ea-834f-d5665d530c44.png">
 
 ## Needed for this feature:
@@ -11,10 +15,10 @@ This schoolproject consists of creating a feature for an online dating applicati
 - little bit of knowledge of command line
 
 ## Table of contents
-- [Connect Git and Github](#connectgitandgithub)
-- [Install Node](#installnode)
-- [Clone folder](#clonefolder)
-- [Install all the packages](#installallthepackages)
+- Connect Git and Github
+- Install Node
+- Clone folder
+- Install all the packages
 
 ## Getting started
 To start, you must have a *code editor* installed on your computer. For this project (and most of my projects) I used [Visual Studio Code](https://code.visualstudio.com/download). But you can also use [Atom](https://atom.io/), for example.
@@ -64,3 +68,67 @@ Then type the code below into your terminal:
 ``` npm install ```
 
 With this line of code, you download all the packages (like express) you need for this feature! :raised_hands:
+
+### Screenshot about the database
+The structure of the database is shown in the code below:
+
+
+``` JSON
+[
+  {
+    "id":1,
+    "name":"",
+    "gender":"Woman",
+    "age":22,
+    "location":"",
+    "movies":[],
+    "pref":[]
+  },{
+    "id":2,
+    "picture":"JackHughes.png",
+    "name":"Jack Hughes",
+    "gender":"Man",
+    "age":23,
+    "location":"York, England",
+    "movies":["actionMovies","comedyMovies"]
+  },{
+    "id":3,
+    "picture":"KaylaJansen.png",
+    "name":"Kayla Jansen",
+    "gender":"Woman",
+    "age":"22",
+    "location":"York, England",
+    "movies":["comedyMovies"]
+  },{
+    "id":4,
+    "picture":"JenniferMiller.png",
+    "name":"Jennifer Miller",
+    "gender":"Woman",
+    "age":"25",
+    "location":"York, England",
+    "movies":["actionMovies"]
+  },{
+    "id":5,"picture":"NoahAdams.png",
+    "name":"Noah Adams",
+    "gender":"Man",
+    "age":"25",
+    "location":"York, England",
+    "movies":["comedyMovies"]
+  },{
+    "id":6,
+    "picture":"LiamSmith.png",
+    "name":"Liam Smith",
+    "gender":"Man",
+    "age":"22",
+    "location":"York, England",
+    "movies":["adventureMovies","actionMovies"]
+  },{
+    "id":7,
+    "picture":"JamesBrown.png",
+    "name":"James Brown",
+    "gender":"Man",
+    "age":"23",
+    "location":"York, England",
+    "movies":["actionMovies"]
+}]
+```
