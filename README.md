@@ -84,7 +84,8 @@ The structure of the database is shown in the code below:
     "age":22,
     "location":"",
     "movies":[],
-    "pref":[]
+    "prefGender": "",
+    "prefMovies": "",
   },{
     "id":2,
     "picture":"JackHughes.png",
