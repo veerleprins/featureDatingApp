@@ -1,7 +1,7 @@
 // Import packages:
 const express = require('express');
 const bodyParser = require('body-parser');
-const mongo = require('mongodb');
+const mongo = require('mongodb').MongoClient;
 const slug = require('slug');
 const dotenv = require('dotenv').config();
 const app = express();
@@ -14,7 +14,7 @@ let allUsers;
 let db = null;
 let uri = process.env.DB_HOST + ':' + process.env.DB_PORT;
 
-mongo.MongoClient.connect(uri, { useUnifiedTopology: true }, function (err, client){
+mongo.connect(uri, { useUnifiedTopology: true }, function (err, client){
   if (err) throw err;
   db = client.db(process.env.DB_NAME);
   usersCollection = db.collection('users');
@@ -31,15 +31,7 @@ let thisUser = {
   pref: []
 }
 
-let usersData = [{
-  id: 01,
-  name: 'Veerle Prins',
-  gender: 'Woman',
-  age: 22,
-  location: 'Hoofddorp, Nederland',
-  movies: ['actionMovies', 'comedyMovies'],
-  pref: []
-},
+let usersData = [thisUser,
 {
   id: 02,
   picture: 'JackHughes.png',
@@ -105,7 +97,6 @@ app.set('views', 'view-ejs');
 
 //Getting all the paths and calling the functions:
 app.get('/', home);
-// app.get('/probeersel', test);
 app.get('/filters', filters);
 app.get('/*', error);
 app.post('/', postFilters);
@@ -133,28 +124,28 @@ function home(req, res) {
   }
 };
 
-// function test(req, res) {
-//   usersCollection.find().toArray(done)
-//   function done(err, users) {
-//       if (err) {
-//           next(err);
-//       } else {
-//           databaseUsers = users;
-//           res.render('probeersel.ejs', { users: users });
-//       }
-//   }
-// };
-
 function postFilters (req, res){
+  let preferences =
+  usersCollection.updateOne({"id": idThisUser}, {$set: pref}, function(err, result){
+
+  })
+
+
+  console.log(db.getUsers({filter: {id : 1}}));
   usersCollection.find().toArray(done)
   function done(err, users) {
     //Get the OBJECT of the loggedIn user: 
     let loggedIn = users.find(obj => obj.id === idThisUser);
     console.log(loggedIn);
-      if (err) {
-          next(err);
-      } else {
-          res.render('index.ejs', { users: usersData });
+    let gender = req.body.gender;
+    let movie = req.body.movies;
+    let newpref = [gender, movie];
+    if (err) {
+      next(err);
+    } else {
+      loggedIn.update({pref : []}, {$set : {pref: newpref}})
+      console.log(loggedIn);
+      res.render('index.ejs', { users: usersData });
       }
   }};
 
