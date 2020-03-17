@@ -71,67 +71,28 @@ With this line of code, you download all the packages (like express) you need fo
 
 Now you can go to http://localhost:3000/ in your browser and view my filter feature! :raised_hands:
 
-### Screenshot about the database
-The structure of the database is shown in the code below:
+
+### Data from the database
+The structure of the database is shown in the images below. The first image shows the name of the database and the name of the collection. With the filter feature I'm using the 'datingUsers' database.
 
 
-``` JSON
-[
-  {
-    "id":1,
-    "name":"",
-    "gender":"Woman",
-    "age":22,
-    "location":"",
-    "movies":[],
-    "prefGender": "",
-    "prefMovies": "",
-  },{
-    "id":2,
-    "picture":"JackHughes.png",
-    "name":"Jack Hughes",
-    "gender":"Man",
-    "age":23,
-    "location":"York, England",
-    "movies":["actionMovies","comedyMovies"]
-  },{
-    "id":3,
-    "picture":"KaylaJansen.png",
-    "name":"Kayla Jansen",
-    "gender":"Woman",
-    "age":"22",
-    "location":"York, England",
-    "movies":["comedyMovies"]
-  },{
-    "id":4,
-    "picture":"JenniferMiller.png",
-    "name":"Jennifer Miller",
-    "gender":"Woman",
-    "age":"25",
-    "location":"York, England",
-    "movies":["actionMovies"]
-  },{
-    "id":5,"picture":"NoahAdams.png",
-    "name":"Noah Adams",
-    "gender":"Man",
-    "age":"25",
-    "location":"York, England",
-    "movies":["comedyMovies"]
-  },{
-    "id":6,
-    "picture":"LiamSmith.png",
-    "name":"Liam Smith",
-    "gender":"Man",
-    "age":"22",
-    "location":"York, England",
-    "movies":["adventureMovies","actionMovies"]
-  },{
-    "id":7,
-    "picture":"JamesBrown.png",
-    "name":"James Brown",
-    "gender":"Man",
-    "age":"23",
-    "location":"York, England",
-    "movies":["actionMovies"]
-}]
-```
+<img width="1023" alt="Screenshot 2020-03-17 at 23 11 28" src="https://user-images.githubusercontent.com/35265583/76906748-f0142a00-68a4-11ea-96a3-1e929f7b69b8.png">
+
+
+<img width="1008" alt="Screenshot 2020-03-17 at 23 12 29" src="https://user-images.githubusercontent.com/35265583/76906896-408b8780-68a5-11ea-8121-dd27bf8423a7.png">
+
+
+### Sources :books:
+• Array.prototype.push(). (2020, January, 13). Retrieved from https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/push
+• Faure, L. (2017, July 2). Work with JavaScript arrays like a boss. Retrieved from https://hackernoon.com/work-with-javascript-arrays-like-a-boss-97207a042e42
+• MDN. (2019, October 10). Array.prototype.find(). Retrieved from https://developer.mozilla.org/nl/docs/Web/JavaScript/Reference/Global_Objects/Array/find
+• MongoDB . (n.d.). db.collection.updateOne() — MongoDB Manual. Retrieved March 17, 2020, from https://docs.mongodb.com/manual/reference/method/db.collection.updateOne/
+• MongoDB. (n.d.). db.collection.findOne() — MongoDB Manual. Retrieved March 17, 2020, from https://docs.mongodb.com/manual/reference/method/db.collection.findOne/
+• Tutorials Teacher. (n.d.). Access MongoDB in Node.js. Retrieved March 14, 2020, from https://www.tutorialsteacher.com/nodejs/access-mongodb-in-nodejs
+• MongoDB. (n.d.-a). db.collection.find() — MongoDB Manual. Retrieved March 16, 2020, from https://docs.mongodb.com/manual/reference/method/db.collection.find/
+• NPM. (n.d.). npm | build amazing things. Retrieved February 15, 2020, from https://www.npmjs.com/
+• tspycher . (2020, March 15). Re: getting mongo error during database initialisation · Issue #128 · strapi/strapi-docker [Comment]. Retrieved from https://github.com/strapi/strapi-docker/issues/128
+• The Net Ninja. (2016, June 22). Node JS Tutorial for Beginners #25 - Template Engines [Video file]. Retrieved from https://www.youtube.com/watch?v=oZGmHNZv7Sc&list=PL4cUxeGkcC9gcy9lrvMJ75z9maRw4byYp&index=25
+
+### Licence
+MIT © Veerle Prins
