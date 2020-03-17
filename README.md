@@ -2,7 +2,7 @@
 
 This schoolproject consists of creating a feature for an online dating application. Within the project, it was decided to create a **filter** feature. Later in the project there is a collaboration with other students to add other features to a fully functioning dating app. To read the entire process of creating this filter feature and creating the functioning dating application, you can go to my [wiki](https://github.com/veerleprins/featureDatingApp/wiki).
 
-<img width="300" alt="Screenshot 2020-03-17 at 14 23 27" src="https://user-images.githubusercontent.com/35265583/76860255-fed5ef00-685a-11ea-8635-2f70f65f73e3.png"> <img width="300" alt="Screenshot 2020-03-17 at 14 23 49" src="https://user-images.githubusercontent.com/35265583/76860248-fd0c2b80-685a-11ea-85ef-dadbadcaf250.png">
+<img width="250" alt="Screenshot 2020-03-17 at 14 37 18" src="https://user-images.githubusercontent.com/35265583/76861453-eb2b8800-685c-11ea-81da-8c61ea049870.png"> <img width="250" alt="Screenshot 2020-03-17 at 14 37 34" src="https://user-images.githubusercontent.com/35265583/76861441-e8c92e00-685c-11ea-834f-d5665d530c44.png">
 
 ## Needed for this feature:
 - Code editor
