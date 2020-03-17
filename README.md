@@ -83,16 +83,16 @@ The structure of the database is shown in the images below. The first image show
 
 
 ### Sources :books:
-• Array.prototype.push(). (2020, January, 13). Retrieved from https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/push
-• Faure, L. (2017, July 2). Work with JavaScript arrays like a boss. Retrieved from https://hackernoon.com/work-with-javascript-arrays-like-a-boss-97207a042e42
-• MDN. (2019, October 10). Array.prototype.find(). Retrieved from https://developer.mozilla.org/nl/docs/Web/JavaScript/Reference/Global_Objects/Array/find
-• MongoDB . (n.d.). db.collection.updateOne() — MongoDB Manual. Retrieved March 17, 2020, from https://docs.mongodb.com/manual/reference/method/db.collection.updateOne/
-• MongoDB. (n.d.). db.collection.findOne() — MongoDB Manual. Retrieved March 17, 2020, from https://docs.mongodb.com/manual/reference/method/db.collection.findOne/
-• Tutorials Teacher. (n.d.). Access MongoDB in Node.js. Retrieved March 14, 2020, from https://www.tutorialsteacher.com/nodejs/access-mongodb-in-nodejs
-• MongoDB. (n.d.-a). db.collection.find() — MongoDB Manual. Retrieved March 16, 2020, from https://docs.mongodb.com/manual/reference/method/db.collection.find/
-• NPM. (n.d.). npm | build amazing things. Retrieved February 15, 2020, from https://www.npmjs.com/
-• tspycher . (2020, March 15). Re: getting mongo error during database initialisation · Issue #128 · strapi/strapi-docker [Comment]. Retrieved from https://github.com/strapi/strapi-docker/issues/128
-• The Net Ninja. (2016, June 22). Node JS Tutorial for Beginners #25 - Template Engines [Video file]. Retrieved from https://www.youtube.com/watch?v=oZGmHNZv7Sc&list=PL4cUxeGkcC9gcy9lrvMJ75z9maRw4byYp&index=25
+- Array.prototype.push(). (2020, January, 13). Retrieved from https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/push
+- Faure, L. (2017, July 2). Work with JavaScript arrays like a boss. Retrieved from https://hackernoon.com/work-with-javascript-arrays-like-a-boss-97207a042e42
+- MDN. (2019, October 10). Array.prototype.find(). Retrieved from https://developer.mozilla.org/nl/docs/Web/JavaScript/Reference/Global_Objects/Array/find
+- MongoDB . (n.d.). db.collection.updateOne() — MongoDB Manual. Retrieved March 17, 2020, from https://docs.mongodb.com/manual/reference/method/db.collection.updateOne/
+- MongoDB. (n.d.). db.collection.findOne() — MongoDB Manual. Retrieved March 17, 2020, from https://docs.mongodb.com/manual/reference/method/db.collection.findOne/
+- Tutorials Teacher. (n.d.). Access MongoDB in Node.js. Retrieved March 14, 2020, from https://www.tutorialsteacher.com/nodejs/access-mongodb-in-nodejs
+- MongoDB. (n.d.-a). db.collection.find() — MongoDB Manual. Retrieved March 16, 2020, from https://docs.mongodb.com/manual/reference/method/db.collection.find/
+- NPM. (n.d.). npm | build amazing things. Retrieved February 15, 2020, from https://www.npmjs.com/
+- tspycher . (2020, March 15). Re: getting mongo error during database initialisation · Issue #128 · strapi/strapi-docker [Comment]. Retrieved from https://github.com/strapi/strapi-docker/issues/128
+- The Net Ninja. (2016, June 22). Node JS Tutorial for Beginners #25 - Template Engines [Video file]. Retrieved from https://www.youtube.com/watch?v=oZGmHNZv7Sc&list=PL4cUxeGkcC9gcy9lrvMJ75z9maRw4byYp&index=25
 
 ### Licence
 MIT © Veerle Prins
