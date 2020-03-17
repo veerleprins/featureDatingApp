@@ -67,7 +67,9 @@ Then type the code below into your terminal:
 
 ``` npm install ```
 
-With this line of code, you download all the packages (like express) you need for this feature! :raised_hands:
+With this line of code, you download all the packages (like express) you need for this feature.
+
+Now you can go to http://localhost:3000/ in your browser and view my filter feature! :raised_hands:
 
 ### Screenshot about the database
 The structure of the database is shown in the code below:
