@@ -144,7 +144,7 @@ function postFilters (req, res){
     if (err) {
       next(err)
     } else {
-      db.collection('datingUsers').updateOne({id: 1}, { $set: { prefGender: req.body.gender }})
+      db.collection('datingUsers').updateOne({id: 1}, { $set: { prefGender: req.body.gender, prefMovies: req.body.movies}})
       console.log(user);
 
       // if ( == 'anything') {
