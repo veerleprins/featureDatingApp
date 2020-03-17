@@ -9,7 +9,6 @@ const PORT = 3000;
 const urlencodedParser = bodyParser.urlencoded({extended: true});
 
 let idThisUser = 1;
-let allUsers;
 let db = null;
 let url = process.env.DB_HOST + ':' + process.env.DB_PORT;
 
@@ -20,73 +19,6 @@ mongo.MongoClient.connect(url, { useUnifiedTopology: true }, function (err, clie
   db = client.db(process.env.DB_NAME);
   console.log('Database is connected...');
 });
-
-let thisUser = {
-  id: 01,
-  name: 'Veerle Prins',
-  gender: 'Woman',
-  age: 22,
-  location: 'Hoofddorp, Nederland',
-  movies: ['actionMovies', 'comedyMovies'],
-  pref: []
-}
-
-let usersData = [thisUser,
-{
-  id: 02,
-  picture: 'JackHughes.png',
-  name: 'Jack Hughes',
-  gender: 'Man',
-  age: 23,
-  location: 'York, England',
-  movies: ['actionMovies', 'comedyMovies']
-},
-{
-  id: 03,
-  picture: 'KaylaJansen.png',
-  name: 'Kayla Jansen',
-  gender: 'Woman',
-  age: '22',
-  location: 'York, England',
-  movies: ['comedyMovies']
-}, 
-{
-  id: 04,
-  picture: 'JenniferMiller.png',
-  name: 'Jennifer Miller',
-  gender: 'Woman',
-  age: '25',
-  location: 'York, England',
-  movies: ['actionMovies']
-},
-{
-  id: 05,
-  picture: 'NoahAdams.png',
-  name: 'Noah Adams',
-  gender: 'Man',
-  age: '25',
-  location: 'York, England',
-  movies: ['comedyMovies']
-},
-{
-  id: 06,
-  picture: 'LiamSmith.png',
-  name: 'Liam Smith',
-  gender: 'Man',
-  age: '22',
-  location: 'York, England',
-  movies: ['adventureMovies', 'actionMovies']
-},
-{
-  id: 07,
-  picture: 'JamesBrown.png',
-  name: 'James Brown',
-  gender: 'Man',
-  age: '23',
-  location: 'York, England',
-  movies: ['actionMovies']
-}
-];
 
 app.use(express.static('static'));
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -104,48 +36,86 @@ app.post('/', postFilters);
 //Listen to the port:
 app.listen(PORT, connected);
 
-function filters(req, res){
-    db.collection('datingUsers').findOne({_id: ('5e70df1afab0ce3cb81154f8')}, test);
+function removeOwn(r_users) {
+  //Removes the own user from the list of persons:
+  let index = r_users.findIndex(p => p.id === idThisUser);
+  let allUsers = r_users;
+  allUsers.splice(index, 1);
 
-    function test(err, users) {
-      if (err) {
-        next(err)
-      } else {
-        // let data = slug(req.body);
-        res.render('/', { preferences: req.body }) ;
-      }
-    }
+  return allUsers
 }
 
 function home(req, res) {
   db.collection('datingUsers').find().toArray(done)
-
   function done(err, users) {
-    //Get the index of the loggedIn user: 
-    let index = users.findIndex(p => p.id === idThisUser);
-    //Remove own user from allUsers: 
-    allUsers = users;
-    allUsers.splice(index, 1);
 
+    let databaseUsers = removeOwn(users)
       if (err) {
           next(err);
       } else {
-          res.render('index.ejs', { users: allUsers });
+          res.render('index.ejs', { users: databaseUsers });
       }
   }
 };
 
-function postFilters (req, res){
-  db.collection('datingUsers').findOne({id: 1}, test);
-  // db.collection('datingUsers').findOne({_id: "5e70df1afab0ce3cb81154f8"}, test);
-  // db.collection('datingUsers').insertOne({ _id: ('5e70df1afab0ce3cb81154f8')}, { $set: { prefGender: req.body.gender }})
 
-  function test(err, user) {
+
+function postFilters (req, res){
+  db.collection('datingUsers').updateOne({id: 1}, { $set: { prefGender: req.body.gender, prefMovies: req.body.movies}});
+  
+
+  db.collection('datingUsers').find().toArray(done);
+
+  let filteredUsers = [];
+  function done (err, users) {
+    let preferenceThisUser = users[0].prefGender
+    let preferenceThisMovie = users[0].prefMovies
+    console.log(users[0].prefGender);
+    console.log(preferenceThisMovie);
     if (err) {
-      next(err)
-    } else {
-      db.collection('datingUsers').updateOne({id: 1}, { $set: { prefGender: req.body.gender, prefMovies: req.body.movies}})
-      console.log(user);
+      next(err);
+    }else {
+      let databaseUsers = removeOwn(users);
+      users.forEach(function(person){
+        person.movies.forEach(function (movie) {
+          if (person.gender === preferenceThisUser || person.gender === 'Anything') {
+            if (preferenceThisMovie === "" || movie === preferenceThisMovie){
+              filteredUsers.push(person);
+            }
+          }
+        })
+        // if (person.gender === preferenceThisUser || person.gender === 'Anything') {
+        //   console.log(person);
+        //   filteredUsers.push(person);
+        // }
+      })
+      // databaseUsers.find({ gender: users }|| {prefGender: "Anything"}).toArray(matchOrNot);
+      res.render('index.ejs', {users : filteredUsers});
+      filteredUsers = [];
+      console.log(filteredUsers);
+    }
+  }
+
+  // users.forEach(function(person) {
+    //       if (person.id != 01) {
+    //         if (person.gender === filters[0] || filters[0] === 'Anything') {
+    //           filteredUsers.filtered.push(person);
+    //         };
+    //       }
+    //     });
+
+  // function test(err, user) {
+  //   if (err) {
+  //     next(err)
+  //   } else {
+  //     // db.collection('datingUsers').updateOne({id: 1}, { $set: { prefGender: req.body.gender, prefMovies: req.body.movies}})
+  //     console.log('test');
+  //     res.render('index.ejs', { users: user})
+
+
+  //   }
+  // }
+  
 
       // if ( == 'anything') {
 
@@ -154,9 +124,6 @@ function postFilters (req, res){
 
 
       // }
-      res.render('index.ejs', { users: user})
-    }
-  }
         //  if (err) {
         //     next(err);
         // } else {
