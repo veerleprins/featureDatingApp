@@ -5,14 +5,7 @@ This schoolproject consists of creating a feature for an online dating applicati
 ## Job story
 *When I sit on the couch at home with my phone in my hands, I want to be able to filter on the movie preferences of my possible matches, so that I don't have a fight in the future about which movie genre we're going to watch (for example on Netflix).*
 
-
 <img width="250" alt="Screenshot 2020-03-17 at 14 41 11" src="https://user-images.githubusercontent.com/35265583/76861775-642adf80-685d-11ea-9f19-bea6d7879213.png"> <img width="250" alt="Screenshot 2020-03-17 at 14 37 34" src="https://user-images.githubusercontent.com/35265583/76861441-e8c92e00-685c-11ea-834f-d5665d530c44.png">
-
-## Needed for this feature:
-- Code editor
-- knowledge of JavaScript
-- knowledge of HTML & CSS
-- little bit of knowledge of command line
 
 ## Table of contents
 1. Connect Git and Github
@@ -22,7 +15,7 @@ This schoolproject consists of creating a feature for an online dating applicati
 5. Start and run the code!
 6. Database connection
 
-## Getting started
+## Getting started :exclamation:
 To start, you must have a *code editor* installed on your computer. For this project (and most of my projects) I used [Visual Studio Code](https://code.visualstudio.com/download). But you can also use [Atom](https://atom.io/), for example.
 
 ### 1. Connect Git and GitHub :octocat:
@@ -81,7 +74,7 @@ Now you can go to http://localhost:3000/ in your browser and view my filter feat
 ### 6. Database connection :cloud:
 If you can't connect with my database cause a *MongoObjectError*, feel free to contact me to ask for the DB host, port and name to make the connection for the database. 
 
-## Data from the database 
+## Data from the database :arrow_down:
 The structure of the database is shown in the images below. The first image shows the name of the database and the name of the collection. With the filter feature I'm using the 'datingUsers' database.
 
 
