@@ -1,7 +1,7 @@
 // Import packages:
 const express = require('express');
 const bodyParser = require('body-parser');
-const mongo = require('mongodb');
+const mongo = require('mongodb').MongoClient;
 const slug = require('slug');
 const dotenv = require('dotenv').config();
 const app = express();
@@ -12,7 +12,7 @@ let idThisUser = 1;
 let db = null;
 let url = process.env.DB_HOST + ':' + process.env.DB_PORT;
 
-mongo.MongoClient.connect(url, { useUnifiedTopology: true }, function (err, client){
+mongo.connect(url, { useUnifiedTopology: true }, function (err, client){
   if (err) {
     throw err
   }
@@ -68,6 +68,8 @@ function postFilters (req, res){
     function done (err, users) {
       let preferenceThisUser = users[0].prefGender
       let preferenceThisMovie = users[0].prefMovies
+      let gebruikers = db.collection('datingUsers').find({gender: "Man"});
+      console.log(gebruikers);
       if (err) {
         next(err);
       }else {
@@ -79,9 +81,9 @@ function postFilters (req, res){
             }
           })
         })
-        console.log(filteredUsers);
+        // console.log(filteredUsers);
         if (filteredUsers === []){
-          console.log(users)
+          // console.log(users)
           filteredUsers = databaseUsers;
         }
         res.render('index.ejs', {users : filteredUsers});
