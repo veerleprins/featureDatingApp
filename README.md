@@ -85,6 +85,7 @@ The structure of the database is shown in the images below. The first image show
 
 
 ## Sources :books:
+- GitHub. (2014, February 15). Mastering Markdown · GitHub Guides. Retrieved from https://guides.github.com/features/mastering-markdown/
 - Array.prototype.push(). (2020, January, 13). Retrieved from https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/push
 - Faure, L. (2017, July 2). Work with JavaScript arrays like a boss. Retrieved from https://hackernoon.com/work-with-javascript-arrays-like-a-boss-97207a042e42
 - MDN. (2019, October 10). Array.prototype.find(). Retrieved from https://developer.mozilla.org/nl/docs/Web/JavaScript/Reference/Global_Objects/Array/find
