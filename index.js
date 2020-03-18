@@ -41,14 +41,12 @@ function removeOwn(r_users) {
   let index = r_users.findIndex(p => p.id === idThisUser);
   let allUsers = r_users;
   allUsers.splice(index, 1);
-
   return allUsers
 }
 
 function home(req, res) {
   db.collection('datingUsers').find().toArray(done)
   function done(err, users) {
-
     let databaseUsers = removeOwn(users)
       if (err) {
           next(err);
@@ -62,39 +60,66 @@ function home(req, res) {
 
 function postFilters (req, res){
   db.collection('datingUsers').updateOne({id: 1}, { $set: { prefGender: req.body.gender, prefMovies: req.body.movies}});
+  setTimeout(wait, 800);
   
-
-  db.collection('datingUsers').find().toArray(done);
-
-  let filteredUsers = [];
-  function done (err, users) {
-    let preferenceThisUser = users[0].prefGender
-    let preferenceThisMovie = users[0].prefMovies
-    console.log(users[0].prefGender);
-    console.log(preferenceThisMovie);
-    if (err) {
-      next(err);
-    }else {
-      let databaseUsers = removeOwn(users);
-      users.forEach(function(person){
-        person.movies.forEach(function (movie) {
-          if (person.gender === preferenceThisUser || person.gender === 'Anything') {
-            if (preferenceThisMovie === "" || movie === preferenceThisMovie){
+  function wait () {
+    db.collection('datingUsers').find().toArray(done);
+    let filteredUsers = [];
+    function done (err, users) {
+      let preferenceThisUser = users[0].prefGender
+      let preferenceThisMovie = users[0].prefMovies
+      if (err) {
+        next(err);
+      }else {
+        let databaseUsers = removeOwn(users);
+        users.forEach(function(person){
+          person.movies.forEach(function (movie) {
+            if (movie === preferenceThisMovie) {
               filteredUsers.push(person);
             }
-          }
+          })
         })
-        // if (person.gender === preferenceThisUser || person.gender === 'Anything') {
-        //   console.log(person);
-        //   filteredUsers.push(person);
-        // }
-      })
-      // databaseUsers.find({ gender: users }|| {prefGender: "Anything"}).toArray(matchOrNot);
-      res.render('index.ejs', {users : filteredUsers});
-      filteredUsers = [];
-      console.log(filteredUsers);
+        console.log(filteredUsers);
+        if (filteredUsers === []){
+          console.log(users)
+          filteredUsers = databaseUsers;
+        }
+        res.render('index.ejs', {users : filteredUsers});
+        filteredUsers = [];
+      }
     }
   }
+};
+  // db.collection('datingUsers').find().toArray(done);
+
+  // let filteredUsers = [];
+  // function done (err, users) {
+  //   let preferenceThisUser = users[0].prefGender
+  //   let preferenceThisMovie = users[0].prefMovies
+  //   console.log(users[0].prefGender);
+  //   console.log(preferenceThisMovie);
+  //   if (err) {
+  //     next(err);
+  //   }else {
+  //     let databaseUsers = removeOwn(users);
+  //     users.forEach(function(person){
+  //       if (person.gender === preferenceThisUser) {
+  //         filteredUsers.push(person);
+  //       }
+  //       // person.movies.forEach(function (movie) {
+  //       //   if (person.gender === preferenceThisUser) {
+  //       //     filteredUsers.push(person);
+  //       //     // if (preferenceThisMovie === "" || movie === preferenceThisMovie){
+  //       //     //   filteredUsers.push(person);
+  //       //     // }
+  //       //   }
+  //       // })
+  //     })
+  //     // databaseUsers.find({ gender: users }|| {prefGender: "Anything"}).toArray(matchOrNot);
+  //     res.render('index.ejs', {users : filteredUsers});
+  //     filteredUsers = [];
+  //   }
+  // }
 
   // users.forEach(function(person) {
     //       if (person.id != 01) {
@@ -115,14 +140,6 @@ function postFilters (req, res){
 
   //   }
   // }
-  
-
-      // if ( == 'anything') {
-
-      //   // if PrefGender === gender || prefGender === 'anything' => show  db.collection('datingUsers').find().toArray(done)
-      //   // functie done
-
-
       // }
         //  if (err) {
         //     next(err);
@@ -133,29 +150,6 @@ function postFilters (req, res){
   // preference = req.body.gender;
   // db.collection('users').updateOne({ _id: ('5e6f9eadfab0ce3cb81154f0')}, { $set: { prefGender: req.body.gender }})
 
-
-  // function test (err, user) {
-  //   if (err) {
-  //     next(err)
-  //   }else {
-  //     db.collection('users').updateOne({prefGender: ''}, {$set: preference});
-  //   }
-  // } 
-};
-
-
-// let index = users.findIndex(p => p.id === yourSelf);
-// completeCollection = users;
-// completeCollection.splice(index, 1);
-// // console.log(allUsers)
-
-// let x = (completeCollection.length - 1);
-
-
-// if (req.body.like) {
-//     usersCollection.updateOne({ _id: (completeCollection[x]._id) }, { $set: { match: true } })
-
-//     console.log(`you have a like with ${completeCollection[x].name}, and the ID is ${completeCollection[x]._id}`)
 
 
 
@@ -176,7 +170,6 @@ function postFilters (req, res){
     // if (err) {
     //   next(err);
     // } else {
-    //   // hier naar kijken: loggedIn["pref"].update()
     //   }
 
 
