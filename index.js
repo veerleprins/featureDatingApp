@@ -7,7 +7,6 @@ const slug = require('slug');
 const dotenv = require('dotenv').config();
 const app = express();
 const PORT = 3000;
-const urlencodedParser = bodyParser.urlencoded({extended: true});
 
 //Setting the global variables: 
 let idThisUser = 1;
@@ -19,7 +18,7 @@ mongo.connect(url, { useUnifiedTopology: true }, function (err, client){
   if (err) {
     throw err
   }
-  let db = client.db(process.env.DB_NAME);
+  db = client.db(process.env.DB_NAME);
   console.log('Database is connected...');
 });
 
@@ -37,7 +36,6 @@ app.get('/*', error);
 
 //Listen to the server:
 app.listen(PORT, connected);
-
 
 function searchIndex(s_person) {
   //Searches for the ID of the user that matches 
@@ -75,7 +73,9 @@ function postFilters (req, res){
   //Updates the database with the information from the form and then searches
   // for users that match the logged-in user's preferences. Finally, the index
   // page is shown with the filtered users:
-  db.collection('datingUsers').updateOne({id: 1}, { $set: { prefGender: req.body.gender, prefMovies: req.body.movies}});
+  let gender = slug(req.body.gender);
+  let movie = slug(req.body.movies);
+  db.collection('datingUsers').updateOne({id: 1}, { $set: { prefGender: gender, prefMovies: movie}});
   setTimeout(wait, 800);
   
   function wait () {
