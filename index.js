@@ -1,5 +1,6 @@
 // Import packages:
 const express = require('express');
+const session = require('express-session')
 const bodyParser = require('body-parser');
 const mongo = require('mongodb').MongoClient;
 const slug = require('slug');
@@ -8,43 +9,55 @@ const app = express();
 const PORT = 3000;
 const urlencodedParser = bodyParser.urlencoded({extended: true});
 
+//Setting the global variables: 
 let idThisUser = 1;
 let db = null;
-let url = process.env.DB_HOST + ':' + process.env.DB_PORT;
 
+//Connecting to the database:
+let url = process.env.DB_HOST + ':' + process.env.DB_PORT;
 mongo.connect(url, { useUnifiedTopology: true }, function (err, client){
   if (err) {
     throw err
   }
-  db = client.db(process.env.DB_NAME);
+  let db = client.db(process.env.DB_NAME);
   console.log('Database is connected...');
 });
 
-app.use(express.static('static'));
-app.use(bodyParser.urlencoded({ extended: true }));
-
-//Setting ejs & telling to get view directory:
+//Setting and using the middleware:
 app.set('view engine', 'ejs');
 app.set('views', 'view-ejs');
+app.use(express.static('static'));
+app.use(bodyParser.urlencoded({ extended: true }));
 
 //Getting all the paths and calling the functions:
 app.get('/', home);
 app.get('/filters', filters);
-app.get('/*', error);
 app.post('/', postFilters);
+app.get('/*', error);
 
-//Listen to the port:
+//Listen to the server:
 app.listen(PORT, connected);
 
+
+function searchIndex(s_person) {
+  //Searches for the ID of the user that matches 
+  //the ID of the logged in person:
+  if (s_person.id === idThisUser){
+    return s_person;
+  }
+}
+
 function removeOwn(r_users) {
-  //Removes the own user from the list of persons:
-  let index = r_users.findIndex(p => p.id === idThisUser);
+  //Removes the own user from the array of persons:
+  let index = r_users.findIndex(searchIndex);
   let allUsers = r_users;
   allUsers.splice(index, 1);
   return allUsers
 }
 
 function home(req, res) {
+  //Displays the index page with all the users from the database
+  //except the logged in user:
   db.collection('datingUsers').find().toArray(done)
   function done(err, users) {
     let databaseUsers = removeOwn(users)
@@ -59,6 +72,9 @@ function home(req, res) {
 
 
 function postFilters (req, res){
+  //Updates the database with the information from the form and then searches
+  // for users that match the logged-in user's preferences. Finally, the index
+  // page is shown with the filtered users:
   db.collection('datingUsers').updateOne({id: 1}, { $set: { prefGender: req.body.gender, prefMovies: req.body.movies}});
   setTimeout(wait, 800);
   
@@ -68,7 +84,11 @@ function postFilters (req, res){
     function done (err, users) {
       let preferenceThisUser = users[0].prefGender
       let preferenceThisMovie = users[0].prefMovies
-      let gebruikers = db.collection('datingUsers').find({gender: "Man"});
+      let gebruikers = db.collection('datingUsers').find({gender: preferenceThisUser}, test);
+      function test(err, user) {
+        if (err) {next(err)}
+        else {return user;}
+      }
       console.log(gebruikers);
       if (err) {
         next(err);
@@ -240,10 +260,12 @@ function postFilters (req, res){
 // }; 
 
 function filters(req, res) {
+  //Displays the filter page:
   res.render('filters');
 };
 
 function error(req, res) {
+  //Displays the error page:
  res.render('404');
 };
 
