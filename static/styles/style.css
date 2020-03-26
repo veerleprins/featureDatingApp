@@ -184,6 +184,14 @@ body {
                           MOBILE index main
 *******************************************************************************/
 
+.error {
+    padding: 0em 3em;
+    height: 80vh;
+    text-align: center;
+    display: table-cell;
+    vertical-align: middle
+}
+
 .swipe main {
     margin: 0em 1em;
 }
