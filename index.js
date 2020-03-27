@@ -27,6 +27,11 @@ app.set('view engine', 'ejs');
 app.set('views', 'view-ejs');
 app.use(express.static('static'));
 app.use(bodyParser.urlencoded({ extended: true }));
+app.use(session({
+  secret: 'secret-key',
+  resave: false,
+  saveUninitialized: false,
+}));
 
 //Getting all the paths and calling the functions:
 app.get('/', home);
@@ -42,7 +47,7 @@ async function home(req, res, next) {
   //except the logged in user:
   try {
     let users = await db.collection('datingUsers').find({id: {$ne: idThisUser}}).toArray()
-    res.render('index.ejs', {users : users});
+    await res.render('index.ejs', {users : users});
   } catch (err) {
     next(err);
   }
