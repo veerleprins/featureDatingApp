@@ -4,21 +4,23 @@ const session = require('express-session')
 const bodyParser = require('body-parser');
 const mongo = require('mongodb').MongoClient;
 const slug = require('slug');
-const dotenv = require('dotenv').config();
 const app = express();
-const PORT = 3000;
+require('dotenv').config();
 
 //Setting the global variables: 
+const DB_PORT = process.env.DB_PORT;
+const DB_HOST = process.env.DB_HOST;
+const DB_NAME = process.env.DB_NAME;
 let idThisUser = 1;
 let db = null;
+let url = DB_HOST + ':' + DB_PORT;
 
 //Connecting to the database:
-let url = process.env.DB_HOST + ':' + process.env.DB_PORT;
 mongo.connect(url, { useUnifiedTopology: true }, function (err, client){
   if (err) {
     throw err
   }
-  db = client.db(process.env.DB_NAME);
+  db = client.db(DB_NAME);
   console.log('Database is connected...');
 });
 
@@ -40,7 +42,7 @@ app.post('/', post);
 app.get('/*', error);
 
 //Listen to the server:
-app.listen(PORT, connected);
+app.listen(DB_PORT, connected);
 
 async function home(req, res, next) {
   //Displays the index page with all the users from the database
@@ -53,6 +55,18 @@ async function home(req, res, next) {
   }
 };
 
+async function updatePreferences (gender, movie) {
+  try {
+    await db.collection('datingUsers').updateOne(
+      {id: idThisUser},
+      {$set: { prefGender: gender, prefMovies: movie}}
+    );
+    console.log('Database updated!');
+  } catch {
+    next(err);
+  }
+}
+
 async function post (req, res, next) {
   //Updates the database with the information from the form and then searches
   // for users that match the logged-in user's preferences. Finally, the index
@@ -60,21 +74,20 @@ async function post (req, res, next) {
   let prefgender = slug(req.body.gender);
   let prefmovie = slug(req.body.movies);
   try {
-    await db.collection('datingUsers').updateOne(
-      {id: idThisUser},
-      {$set: { prefGender: prefgender, prefMovies: prefmovie}}
-    );
+    updatePreferences(prefgender, prefmovie);
     let allUsers = await db.collection('datingUsers').find({id: {$ne: idThisUser}}).toArray();
     let loggedIn = await db.collection('datingUsers').find({id: idThisUser}).toArray();
     let showUsers = await db.collection('datingUsers').find({$and : [{gender : prefgender}, {movies : prefmovie}]}).toArray();
     let noMovies = await db.collection('datingUsers').find({$and : [{id: {$ne: idThisUser}}, {gender : prefgender}]}).toArray();
-    let everything = await db.collection('datingUsers').find({$and : [{$or : [{gender : prefgender}, {movies : prefmovie}]}, {id: {$ne: idThisUser}}]}).toArray();
-    if (loggedIn[0].prefMovies === "") {
-      await res.render('index.ejs', {users: noMovies});
-    } else if (loggedIn[0].prefGender === "Everything") {
-      await res.render('index.ejs', {users: everything});
+    let everyone = await db.collection('datingUsers').find({$and : [{$or : [{gender : prefgender}, {movies : prefmovie}]}, {id: {$ne: idThisUser}}]}).toArray();
+    if (loggedIn[0].prefMovies === "" && loggedIn[0].prefGender === "Everyone") {
+      res.render('index.ejs', {users : allUsers});
+    } else if (loggedIn[0].prefMovies === "") {
+      res.render('index.ejs', {users: noMovies});
+    } else if (loggedIn[0].prefGender === "Everyone") {
+      res.render('index.ejs', {users: everyone});
     } else {
-      await res.render('index.ejs', {users: showUsers});
+      res.render('index.ejs', {users: showUsers});
     }
   } catch (err) {
     next(err);
@@ -93,5 +106,5 @@ function error(req, res) {
 
 function connected() {
   //Server listening on given port:
-  console.log(`Server is listening on port ${PORT}`);
+  console.log(`Server is listening on port ${DB_PORT}`);
 }
