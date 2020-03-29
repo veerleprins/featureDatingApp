@@ -1,6 +1,6 @@
 // Import packages:
 const express = require('express');
-const session = require('express-session')
+const session = require('express-session');
 const bodyParser = require('body-parser');
 const mongo = require('mongodb').MongoClient;
 const slug = require('slug');
@@ -30,9 +30,9 @@ app.set('views', 'view-ejs');
 app.use(express.static('static'));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(session({
-  secret: 'secret-key',
-  resave: false,
-  saveUninitialized: false,
+  secret: process.env.SESSION_SECRET,
+  resave: true,
+  saveUninitialized: true,
 }));
 
 //Getting all the paths and calling the functions:
@@ -47,6 +47,7 @@ app.listen(DB_PORT, connected);
 async function home(req, res, next) {
   //Displays the index page with all the users from the database
   //except the logged in user:
+  console.log(req.session.movies);
   try {
     let users = await db.collection('datingUsers').find({id: {$ne: idThisUser}}).toArray()
     await res.render('index.ejs', {users : users});
@@ -56,24 +57,27 @@ async function home(req, res, next) {
 };
 
 async function updatePreferences (gender, movie) {
+  //Updates the database with the information form the form:
   try {
     await db.collection('datingUsers').updateOne(
       {id: idThisUser},
       {$set: { prefGender: gender, prefMovies: movie}}
     );
-    console.log('Database updated!');
   } catch {
     next(err);
   }
 }
 
 async function post (req, res, next) {
-  //Updates the database with the information from the form and then searches
-  // for users that match the logged-in user's preferences. Finally, the index
-  // page is shown with the filtered users:
-  let prefgender = slug(req.body.gender);
-  let prefmovie = slug(req.body.movies);
+  //Searches for users that match the logged-in user's preferences
+  // and show the index page with these filtered users:
+  req.session.gender = req.body.gender;
+  req.session.movies = req.body.movies;
+  console.log(req.session.movies);
   try {
+    let prefgender = slug(req.body.gender);
+    let prefmovie = slug(req.body.movies);
+
     updatePreferences(prefgender, prefmovie);
     let allUsers = await db.collection('datingUsers').find({id: {$ne: idThisUser}}).toArray();
     let loggedIn = await db.collection('datingUsers').find({id: idThisUser}).toArray();
@@ -96,7 +100,7 @@ async function post (req, res, next) {
 
 function filters(req, res) {
   //Displays the filter page:
-  res.render('filters');
+  res.render('filters', {gender : req.session.gender});
 };
 
 function error(req, res) {
