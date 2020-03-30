@@ -47,7 +47,6 @@ app.listen(DB_PORT, connected);
 async function home(req, res, next) {
   //Displays the index page with all the users from the database
   //except the logged in user:
-  console.log(req.session.movies);
   try {
     let users = await db.collection('datingUsers').find({id: {$ne: idThisUser}}).toArray()
     await res.render('index.ejs', {users : users});
@@ -72,8 +71,7 @@ async function post (req, res, next) {
   //Searches for users that match the logged-in user's preferences
   // and show the index page with these filtered users:
   req.session.gender = req.body.gender;
-  req.session.movies = req.body.movies;
-  console.log(req.session.movies);
+  req.session.movie = req.body.movies;
   try {
     let prefgender = slug(req.body.gender);
     let prefmovie = slug(req.body.movies);
@@ -100,7 +98,7 @@ async function post (req, res, next) {
 
 function filters(req, res) {
   //Displays the filter page:
-  res.render('filters', {gender : req.session.gender});
+  res.render('filters', {gender : req.session.gender, movie: req.session.movie});
 };
 
 function error(req, res) {
