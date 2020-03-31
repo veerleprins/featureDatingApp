@@ -49,10 +49,9 @@
             </li>
             <% } %> 
         </ul>
-        <%if(users === ""){%>
-            <p><%="Unfortunately, there are no users who meet these preferences yet..."%></p>
+        <%if(users === {}){%>
+            <p>Unfortunately, there are no users who meet these preferences yet...</p>
         <%}%>
-        <!-- <p class="error">Unfortunately, there are no users who meet these preferences yet...</p> -->
     </main>
     <%- include ("partials/footer.ejs") %> 
 </body>
