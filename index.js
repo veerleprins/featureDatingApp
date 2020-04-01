@@ -13,7 +13,6 @@ const DB_HOST = process.env.DB_HOST;
 const DB_NAME = process.env.DB_NAME;
 let idThisUser = 1;
 let db = null;
-let value;
 let url = DB_HOST + ':' + DB_PORT;
 
 //Connecting to the database:
@@ -54,15 +53,10 @@ function filterPreferences(users, prefgender, prefmovie) {
 
     if ((user.gender === prefgender || prefgender === "Everyone") && prefmovie === "") {
       return true
-    } else if (prefmovie !== "") {
-      console.log('hier komt ie wel...');
-      console.log(user.movies.length);
-      let value = user.movies.forEach(function(movie) {
-        console.log(movie);
-        console.log(prefmovie);
+    } else if ((user.gender === prefgender || prefgender === "Everyone") && prefmovie !== "") {
+      return user.movies.find(function (movie){
         return movie === prefmovie;
       })
-      console.log(value);
     }
   });
 }
@@ -72,39 +66,13 @@ async function home(req, res, next) {
   //except the logged in user:
   try {
     const datingUsers = await db.collection('datingUsers').find().toArray();
+    const usersWithout = await db.collection('datingUsers').find({id: {$ne: idThisUser}}).toArray();
     let thisUser = datingUsers.filter(getOwn);
     req.session.gender = thisUser[0].prefGender;
     req.session.movie = thisUser[0].prefMovies;
 
-    // const filterOptions = {
-    //   gender: prefgender,
-    //   // name: 'James Brown'
-    //   // movies: prefmovie
-    // };
-
-    // let filtered = filterPreferences(datingUsers, prefgender, prefmovie);
-    // console.log(filtered);
-
-
-    // const newArray = filterUsers(datingUsers, filterOptions);
-    // console.log(newArray);
-    let filtered = filterPreferences(datingUsers, thisUser[0].prefGender, thisUser[0].prefMovies);
-
-    let showUsers = await db.collection('datingUsers').find({$and : [{gender : thisUser[0].prefGender}, {movies : thisUser[0].prefMovies}]}).toArray();
-    let noMovies = await db.collection('datingUsers').find({$and : [{id: {$ne: idThisUser}}, {gender : thisUser[0].prefGender}]}).toArray();
-    let everyone = await db.collection('datingUsers').find({$and : [{$or : [{gender : thisUser[0].prefGender}, {movies : thisUser[0].prefMovies}]}, {id: {$ne: idThisUser}}]}).toArray();
-    if (thisUser[0].prefMovies === "" && thisUser[0].prefGender === "Everyone") {
-      value = datingUsers;
-    } else if (thisUser[0].prefMovies === "") {
-      value = noMovies;
-    } else if (thisUser[0].prefGender === "Everyone") {
-      value = everyone;
-    } else {
-      value = showUsers;
-    }
-    res.render('index.ejs', {users: value})
-    // let users = await db.collection('datingUsers').find({id: {$ne: idThisUser}}).toArray()
-    // await res.render('index.ejs', {users : users});
+    let filtered = filterPreferences(usersWithout, thisUser[0].prefGender, thisUser[0].prefMovies);
+    res.render('index.ejs', {users: filtered});
   } catch (err) {
     next(err);
   }
@@ -122,38 +90,6 @@ async function updatePreferences (gender, movie) {
   }
 }
 
-function filterUsers(users, options) { 
-  console.log(options);
-  return users.filter(function (user) {
-    
-    for (let property in options) {
-      // Voor elke object property in user, kijk of de megegeven option bestaat. Return false if not.
-      console.log(options[property]);
-      if (user[property] != options[property]){
-        return false;
-      }
-      return true;
-    }
-  });
-}
-
-function filterPreferences(users, prefgender, prefmovie) {
-  return users.filter(function (user) {
-
-    if ((user.gender === prefgender || prefgender === "Everyone") && prefmovie === "") {
-      return true
-    } else if (prefmovie !== "") {
-      console.log('hier komt ie wel...');
-      console.log(user.movies.length);
-      let value = user.movies.forEach(function(movie) {
-        console.log(movie);
-        console.log(prefmovie);
-        return movie === prefmovie;
-      })
-      console.log(value);
-    }
-  });
-}
 
 async function postPreferences(req, res, next) {
   try {
