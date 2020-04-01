@@ -96,6 +96,7 @@ The structure of the database is shown in the images below. The first image show
 - NPM. (n.d.). npm | build amazing things. Retrieved February 15, 2020, from https://www.npmjs.com/
 - tspycher . (2020, March 15). Re: getting mongo error during database initialisation · Issue #128 · strapi/strapi-docker [Comment]. Retrieved from https://github.com/strapi/strapi-docker/issues/128
 - The Net Ninja. (2016, June 22). Node JS Tutorial for Beginners #25 - Template Engines [Video file]. Retrieved from https://www.youtube.com/watch?v=oZGmHNZv7Sc&list=PL4cUxeGkcC9gcy9lrvMJ75z9maRw4byYp&index=25
+- StackOverflow. (2015, August 5). javascript filter array multiple conditions. Retrieved March 31, 2020, from https://stackoverflow.com/questions/31831651/javascript-filter-array-multiple-conditions/44807918
 
 ## Licence :lock:
 MIT © Veerle Prins
