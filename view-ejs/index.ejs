@@ -18,11 +18,6 @@
     </header>
     <main>
         <ul>
-            <%if(users === ""){%>
-                <li>
-                    <%=users%> 
-                </li>
-            <%}%>
             <% for (let i =0; i <users.length; i++) { %> 
             <li>
                 <section>
@@ -49,9 +44,13 @@
             </li>
             <% } %> 
         </ul>
-        <%if(users === {}){%>
-            <p>Unfortunately, there are no users who meet these preferences yet...</p>
-        <%}%>
+        <% if (users.length === 0) { %>
+            <div class="filterbutton">
+                <h2>Ooooops</h2>
+                <p>Unfortunately, there are no users who meet these preferences yet...</p>
+                <a href="filters">Go to filters</a>    
+            </div>
+        <% } %>
     </main>
     <%- include ("partials/footer.ejs") %> 
 </body>
