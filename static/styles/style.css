@@ -429,8 +429,20 @@ body {
 
     .swipe header ul li:nth-of-type(3) a img {
         /* Logo: */
-        width: 120%;
+        margin-left: 0em;
+        width: 100%;
     }
+
+    .swipe header ul li:nth-of-type(3) a p {
+        font-size: 16px;
+        text-align: center;
+    }
+
+    .swipe header ul li:nth-of-type(3) a {
+        color: black;
+        text-decoration: none;
+    }
+    
 /******************************************************************************
                           TABLET index main
 *******************************************************************************/
@@ -439,111 +451,266 @@ body {
         margin: 0 auto;
     }
 
-    /* .swipe main section figure a {
-        width: 20%;
-        height: 20%;
-    } */
+    .swipe main section {
+      margin-top: 1em;
+      border-radius: 1em;;
+      box-shadow: 4px 4px 8px grey;
+  }
 
+  .swipe main section figure {
+    height: 75vh;
+    position: relative;
+  }
+
+  .swipe main section figure img:nth-last-of-type(1) {
+    width: 100%;
+    height: 100%;
+    border-radius: 1em;
+    /* height: 25em; */
+    object-fit: cover;
+    margin: 0 auto;
+  }
+
+  .swipe main section figure a {
+    width: 24px;
+    height: 24px;
+    position: absolute;
+    left: 1em;
+    top: 1em;
+  }
+
+  .swipe main section figure p {
+    background-color: #DCABA7;
+    color: white;
+    font-weight: 300;
+    border-radius: 0.2em;
+    padding: 0.3em;
+    text-decoration: none;
+    position: absolute;
+    left: 1rem;
+  }
+
+  .swipe main section figure p:nth-of-type(1) {
+    bottom: 9.5rem;
+  }
+
+  .swipe main section figure p:nth-of-type(2) {
+    bottom: 12rem;
+  }
+
+  .swipe main section figure figcaption {
+    position: absolute;
+    z-index: 1;
+    bottom: 0;
+    margin-top: -1rem;
+    padding-top: 0.5em;
+    width: 100%;
+    background-image: linear-gradient(to top, rgba(0, 0, 0, 1), rgba(0, 0, 0, .1));
+    color: white;
+    text-align: center;
+    border-radius: 0em 0em 1em 1em;
+  }
+
+  .swipe main section figure figcaption h2 {
+    font-size: 1.5em;
+  }
+
+  .swipe main section figure figcaption h3 {
+    font-weight: 300;
+    font-size: 1em;
+  }
+
+  .swipe main section figure figcaption h3 i {
+    height: 16px;
+    width: auto;
+    margin-right: 0.5em;
+    margin-top: 0.2em;
+  }
+
+  .swipe main section figure figcaption form {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1em;
+  }
+
+  .swipe section figure figcaption form div {
+    width: 50%;
+  }
+
+  .swipe section figure figcaption form button {
+    margin: 0 auto;
+    background-color: none;
+    border-radius: 50%;
+  }
+
+/******************************************************************************
+                          TABLET index footer
+*******************************************************************************/
+
+  .swipe footer {
+  /* background-color: #ffcdec; */
+    background-color: white;
+    box-shadow: black;
+    border-radius: 1em 1em 0em 0em;
+    padding: 0.5em 0em;
+    position: fixed;
+    z-index: 1000;
+    bottom: 0;
+    width: 100%;
+  }
+
+  .swipe footer ul {
+    width: 90%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .swipe footer ul li {
+    list-style-type: none;
+    text-decoration: none;
+  }
+
+  .swipe footer ul li a img {
+    text-align: center;
+    font-size: 2rem;
+    color: black;
+    padding: 0.5rem 2.2rem;
+  }
 }
 
 /******************************************************************************
-                          TABLET index main
+                          LAPTOP index header
 *******************************************************************************/
  
-@media all and (min-width: 768px) {
-    
-    .swipe section {
-        margin-top: 1em;
-        border-radius: 1em;;
-        box-shadow: 4px 4px 8px grey;
-    }
-    
-    .swipe section figure {
-        height: 75vh;
-        position: relative;
-    }
-    
-    .swipe section figure img:nth-last-of-type(1) {
-        width: 100%;
-        height: 100%;
-        border-radius: 1em;
-        /* height: 25em; */
-        object-fit: cover;
-        margin: 0 auto;
-    }
-    
-    .swipe section figure a {
-        width: 24px;
-        height: 24px;
-        position: absolute;
-        left: 1em;
-        top: 1em;
-    }
-    
-    .swipe section figure p {
-        background-color: #DCABA7;
-        color: white;
-        font-weight: 300;
-        border-radius: 0.2em;
-        padding: 0.3em;
-        text-decoration: none;
-        position: absolute;
-        left: 1rem;
-    }
-    
-    .swipe section figure p:nth-of-type(1) {
-        bottom: 9.5rem;
-    }
-    
-    .swipe section figure p:nth-of-type(2) {
-        bottom: 12rem;
-    }
-    
-    .swipe section figure figcaption {
-        position: absolute;
-        z-index: 1;
-        bottom: 0;
-        margin-top: -1rem;
-        padding-top: 0.5em;
-        width: 100%;
-        background-image: linear-gradient(to top, rgba(0, 0, 0, 1), rgba(0, 0, 0, .1));
-        color: white;
-        text-align: center;
-        border-radius: 0em 0em 1em 1em;
-    }
-    
-    .swipe section figure figcaption h2 {
-        font-size: 1.5em;
-    }
-    
-    .swipe section figure figcaption h3 {
-        font-weight: 300;
-        font-size: 1em;
-    }
-    
-    .swipe section figure figcaption h3 i {
-        height: 16px;
-        width: auto;
-        margin-right: 0.5em;
-        margin-top: 0.2em;
-    }
-    
-    .swipe section figure figcaption form {
-        width: 100%;
-        display: flex;
-        justify-content: space-between;
-        margin-bottom: 1em;
-    }
-    
-    .swipe section figure figcaption form div {
-        width: 50%;
-    }
-    
-    .swipe section figure figcaption form button {
-        margin: 0 auto;
-        background-color: none;
-    }
-    
-    
-    
+@media all and (min-width: 1100px) {
+  .swipe header {
+    width: 40%;
+    margin: 0 auto;
+    margin-top: 1em;
+  }
+
+  .swipe header ul li:nth-of-type(2) {
+    margin-left: 0;
+  }
+
+  .swipe header ul li:nth-of-type(3) {
+    margin-right: 0;
+  }
+
+  .swipe header ul li:nth-of-type(2) a img {
+    /* Logo: */
+    width: 130%;
+    padding-top: 0.5em;
+  }
+
+  .swipe header ul li:nth-of-type(3) a {
+    /* Filter icon: */
+    color: black;
+    text-decoration: none;
+  }
+
+  .swipe header ul li:nth-of-type(3) a img {
+    /* Filter icon: */
+    width: 50%;
+  }
+
+/******************************************************************************
+                          LAPTOP index main
+*******************************************************************************/
+  .swipe main section {
+    width: 28em;
+    margin: 0 auto;
+    margin-top: 1em;
+    border-radius: 1em;;
+    box-shadow: 4px 4px 8px grey;
+  }
+
+  .swipe main section figure {
+    height: 75vh;
+    position: relative;
+  }
+
+  .swipe main section figure img:nth-last-of-type(1) {
+    width: 100%;
+    height: 100%;
+    border-radius: 1em;
+    object-fit: cover;
+    margin: 0 auto;
+  }
+
+  .swipe main section figure a {
+    width: 24px;
+    height: 24px;
+    position: absolute;
+    left: 1em;
+    top: 1em;
+  }
+
+  .swipe main section figure p {
+    background-color: #DCABA7;
+    color: white;
+    font-weight: 300;
+    border-radius: 0.2em;
+    padding: 0.3em;
+    text-decoration: none;
+    position: absolute;
+    left: 1rem;
+  }
+
+  .swipe main section figure p:nth-of-type(1) {
+    bottom: 9.5rem;
+  }
+
+  .swipe main section figure p:nth-of-type(2) {
+    bottom: 12rem;
+  }
+
+  .swipe main section figure figcaption {
+    position: absolute;
+    z-index: 1;
+    bottom: 0;
+    margin-top: -1rem;
+    padding-top: 0.5em;
+    width: 100%;
+    background-image: linear-gradient(to top, rgba(0, 0, 0, 1), rgba(0, 0, 0, .1));
+    color: white;
+    text-align: center;
+    border-radius: 0em 0em 1em 1em;
+  }
+
+  .swipe main section figure figcaption h2 {
+    font-size: 1.5em;
+  }
+
+  .swipe main section figure figcaption h3 {
+    font-weight: 300;
+    font-size: 1em;
+  }
+
+  .swipe main section figure figcaption h3 i {
+    height: 16px;
+    width: auto;
+    margin-right: 0.5em;
+    margin-top: 0.2em;
+  }
+
+  .swipe main section figure figcaption form {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1em;
+  }
+
+  .swipe section figure figcaption form div {
+    width: 50%;
+  }
+
+  .swipe section figure figcaption form button {
+    margin: 0 auto;
+    background-color: none;
+    border-radius: 50%;
+ }
 }
