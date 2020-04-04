@@ -7,6 +7,9 @@ This schoolproject consists of creating a feature for an online dating applicati
 
 <img width="250" alt="Screenshot 2020-03-17 at 14 41 11" src="https://user-images.githubusercontent.com/35265583/76861775-642adf80-685d-11ea-9f19-bea6d7879213.png"> <img width="250" alt="Screenshot 2020-03-17 at 14 37 34" src="https://user-images.githubusercontent.com/35265583/76861441-e8c92e00-685c-11ea-834f-d5665d530c44.png">
 
+Site:
+[The link to my heroku site](https://featuredatingapp.herokuapp.com/)
+
 ## Table of contents
 1. Connect Git and Github
 2. Install Node
@@ -100,6 +103,7 @@ The structure of the database is shown in the images below. The first image show
 - Eagles, L. (2019, October 12). Causes of Heroku H10-App Crashed Error And How To Solve Them. Retrieved April 5, 2020, from https://dev.to/lawrence_eagles/causes-of-heroku-h10-app-crashed-error-and-how-to-solve-them-3jnl
 - Heroku. (2020, March 31). Heroku Error Codes | Heroku Dev Center. Retrieved April 5, 2020, from https://devcenter.heroku.com/articles/error-codes
 - The Coding Train. (2019, June 28). 3.5 Web Application Deployment (Glitch and Heroku) - Working with Data and APIs in JavaScript [Video file]. Retrieved from https://www.youtube.com/watch?v=Rz886HkV1j4&list=PLRqwX-V7Uu6YxDKpFzf_2D84p0cyk4T7X&index=20
+- Esterling Accime. (2019, November 18). Connect MongoDB Atlas to your Heroku application [Video file]. Retrieved from https://www.youtube.com/watch?v=imR9LlbG3pU
 
 
 ## Licence :lock:
