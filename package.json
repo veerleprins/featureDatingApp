@@ -4,7 +4,7 @@
   "description": "A dating app for a school project",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js",
     "eslint:fix": "eslint . --fix",
     "dev": "nodemon index.js"
   },
