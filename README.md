@@ -97,6 +97,10 @@ The structure of the database is shown in the images below. The first image show
 - tspycher . (2020, March 15). Re: getting mongo error during database initialisation · Issue #128 · strapi/strapi-docker [Comment]. Retrieved from https://github.com/strapi/strapi-docker/issues/128
 - The Net Ninja. (2016, June 22). Node JS Tutorial for Beginners #25 - Template Engines [Video file]. Retrieved from https://www.youtube.com/watch?v=oZGmHNZv7Sc&list=PL4cUxeGkcC9gcy9lrvMJ75z9maRw4byYp&index=25
 - StackOverflow. (2015, August 5). javascript filter array multiple conditions. Retrieved March 31, 2020, from https://stackoverflow.com/questions/31831651/javascript-filter-array-multiple-conditions/44807918
+- Eagles, L. (2019, October 12). Causes of Heroku H10-App Crashed Error And How To Solve Them. Retrieved April 5, 2020, from https://dev.to/lawrence_eagles/causes-of-heroku-h10-app-crashed-error-and-how-to-solve-them-3jnl
+- Heroku. (2020, March 31). Heroku Error Codes | Heroku Dev Center. Retrieved April 5, 2020, from https://devcenter.heroku.com/articles/error-codes
+- The Coding Train. (2019, June 28). 3.5 Web Application Deployment (Glitch and Heroku) - Working with Data and APIs in JavaScript [Video file]. Retrieved from https://www.youtube.com/watch?v=Rz886HkV1j4&list=PLRqwX-V7Uu6YxDKpFzf_2D84p0cyk4T7X&index=20
+
 
 ## Licence :lock:
 MIT © Veerle Prins
