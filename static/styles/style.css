@@ -229,19 +229,30 @@ body {
 .swipe main {
     margin: 0em 1em;
 }
-.swipe .filterbutton h2 {
-    font-size: 2em;
-    text-align: center;
-    margin-top: 1em;
-    margin-bottom: 1em;
+
+.swipe .noUsersError {
+  box-shadow: none;
 }
 
-.swipe .filterbutton p {
-    margin: 2em;
-    text-align: center;
+.swipe .noUsersError h2 {
+  font-size: 2em;
+  text-align: center;
+  margin-top: 1em;
+  margin-bottom: 1em;
 }
 
-.swipe .filterbutton a {
+.swipe .noUsersError img {
+  width: 35%;
+  height: auto;
+  margin: 0% 30%;
+}
+
+.swipe .noUsersError p {
+  text-align: center;
+  margin: 2em;
+}
+
+.swipe .noUsersError a {
     text-align: center;
     text-decoration: none;
     border-radius: 0.5em;

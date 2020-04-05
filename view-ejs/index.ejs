@@ -3,26 +3,18 @@
 
 <head>
     <%- include ("partials/head.ejs") %> 
-    <title>loveback | Home</title>
+    <title>Home | loveback</title>
 </head>
 
 <body class="swipe">
-    <header>
-        <ul>
-            <li><h1>loveback.</h1></li>
-            <li><a href="/"><img src="images/logo.svg" alt="Logo loveback"></a></li>
-            <li><a href="filters">
-                <img src="images/filterIcon.svg" alt="Filter icon">
-            </a></li>
-        </ul>
-    </header>
+    <%- include ("partials/header.ejs") %>
     <main>
         <ul>
             <% for (let i =0; i <users.length; i++) { %> 
             <li>
                 <section>
                     <figure>
-                        <img src="images/<%= users[i].picture %> " alt="image person">
+                        <img src="images/<%= users[i].picture %>" alt="image person">
                         <a href="" class="info"><img src="images/info.svg" alt=""></a>
 
                         <% if (users[i].movies[1] != undefined) {%>
@@ -44,11 +36,12 @@
             <% } %> 
         </ul>
         <% if (users.length === 0) { %>
-            <div class="filterbutton">
+            <section class="noUsersError">
                 <h2>Ooooops</h2>
+                <img src="images/noUsers.svg" alt="image person">
                 <p>Unfortunately, there are no users who meet these preferences yet...</p>
                 <a href="filters">Go to filters</a>    
-            </div>
+            </section>
         <% } %>
     </main>
     <%- include ("partials/footer.ejs") %> 
