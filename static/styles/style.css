@@ -367,7 +367,9 @@ body {
 
 .swipe section figure figcaption form button {
     margin: 0 auto;
-    background-color: none;
+    border-radius: 50%;
+    background-color: transparent;
+    border: none;
 }
 
 /******************************************************************************
@@ -551,7 +553,7 @@ body {
 
   .swipe section figure figcaption form button {
     margin: 0 auto;
-    background-color: none;
+    background-color: transparent;
     border-radius: 50%;
   }
 
@@ -625,7 +627,8 @@ body {
 
   .swipe header ul li:nth-of-type(3) a img {
     /* Filter icon: */
-    width: 50%;
+    width: 120%;
+    margin-top: 0.8em;
   }
 
 /******************************************************************************
@@ -721,7 +724,7 @@ body {
 
   .swipe section figure figcaption form button {
     margin: 0 auto;
-    background-color: none;
+    background-color: transparent;
     border-radius: 50%;
  }
 }
