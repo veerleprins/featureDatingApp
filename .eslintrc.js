@@ -30,7 +30,7 @@ module.exports = {
             'error', 'always'
         ],
         'indent': [
-            false, 'spacs', 2
+            false, 'spaces', 2
         ]
     }
 };
