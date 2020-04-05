@@ -27,7 +27,10 @@ module.exports = {
             'single'
         ],
         'semi': [
-            0
+            'error', 'always'
+        ],
+        'indent': [
+            false, 'spacs', 2
         ]
     }
 };
