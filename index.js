@@ -11,18 +11,15 @@ require("dotenv").config();
 const DB_PORT = process.env.PORT || process.env.DB_PORT;
 const DB_HOST = process.env.DB_HOST;
 const DB_NAME = process.env.DB_NAME;
-let idThisUser = 1;
-let db = null;
 let url = DB_HOST + ":" + DB_PORT;
+let db = null;
+
+//This will be the variable taken from the login
+//in the total dating app:
+let idThisUser = 1;
 
 //Connecting to the database:
-mongo.connect(url, { useUnifiedTopology: true }, function (err, client){
-  if (err) {
-    throw err
-  }
-  db = client.db(DB_NAME);
-  console.log("Database is connected...");
-});
+mongo.connect(url, { useUnifiedTopology: true }, connectDB);
 
 //Setting and using the middleware:
 app.set("view engine", "ejs");
@@ -44,17 +41,26 @@ app.get("/*", error);
 //Listen to the server:
 app.listen(DB_PORT, connected);
 
+async function connectDB(err, client) {
+  //Makes a connection to the database and logs if database
+  // is connected.
+  try {
+    db = await client.db(DB_NAME);
+    console.log("Database is connected...");
+  } catch {
+    console.log(err);
+  }
+};
 
 async function home(req, res, next) {
   //Shows the index page with the filtered users and stores this
   //user's preferences as a session.
   try {
     const datingUsers = await db.collection("datingUsers").find().toArray();
-    let usersWithoutOwn = datingUsers.filter(removeOwn);
+    let usersWithoutOwn =  datingUsers.filter(removeOwn);
     let thisUser = datingUsers.filter(getOwn);
     req.session.gender = thisUser[0].prefGender;
     req.session.movie = thisUser[0].prefMovies;
-
     let filtered = filterPreferences(usersWithoutOwn, thisUser[0].prefGender, thisUser[0].prefMovies);
     res.render("index.ejs", {users: filtered});
   } catch (err) {
@@ -76,7 +82,6 @@ function filterPreferences(users, prefgender, prefmovie) {
   //Filters the users by gender and movie preferences and returns
   //a boolean if the conditions are correct:
   return users.filter(function (user) {
-
     if ((user.gender === prefgender || prefgender === "Everyone") && prefmovie === "") {
       return true;
     } else if ((user.gender === prefgender || prefgender === "Everyone") && prefmovie !== "") {
@@ -97,13 +102,13 @@ async function postPreferences(req, res, next) {
   //updatePreferences function. After this the index page is 
   //redirected again:
   try {
-    if (req.body.remove === "Remove preferences") {
+    if (req.body.remove) {
       req.session.destroy();
       await updatePreferences("Everyone", "");
     } else {
-      let prefgender = slug(req.body.gender);
-      let prefmovie = slug(req.body.movies);
-      await updatePreferences(prefgender, prefmovie);
+      let genderPreference = slug(req.body.gender);
+      let moviePreference = slug(req.body.movies);
+      await updatePreferences(genderPreference, moviePreference);
     }
     res.redirect("/");
   } catch (err) {
@@ -111,12 +116,12 @@ async function postPreferences(req, res, next) {
   }
 }
 
-async function updatePreferences (gender, movie) {
+async function updatePreferences (genderPreference, moviePreference) {
   //Updates the database with the new preferences from the form:
   try {
     await db.collection("datingUsers").updateOne(
       {id: idThisUser},
-      {$set: { prefGender: gender, prefMovies: movie}}
+      {$set: { prefGender: genderPreference, prefMovies: moviePreference}}
     );
   } catch {
     next(err);
