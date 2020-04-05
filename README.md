@@ -7,7 +7,7 @@ This schoolproject consists of creating a feature for an online dating applicati
 
 <img width="250" alt="Screenshot 2020-03-17 at 14 41 11" src="https://user-images.githubusercontent.com/35265583/76861775-642adf80-685d-11ea-9f19-bea6d7879213.png"> <img width="250" alt="Screenshot 2020-03-17 at 14 37 34" src="https://user-images.githubusercontent.com/35265583/76861441-e8c92e00-685c-11ea-834f-d5665d530c44.png">
 
-Site:
+Online site to check how my feature looks like:
 [The link to my heroku site](https://featuredatingapp.herokuapp.com/)
 
 ## Table of contents
