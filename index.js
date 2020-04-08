@@ -61,7 +61,9 @@ async function home(req, res, next) {
     let thisUser = datingUsers.filter(getOwn);
     req.session.gender = thisUser[0].prefGender;
     req.session.movie = thisUser[0].prefMovies;
-    let filtered = filterPreferences(usersWithoutOwn, thisUser[0].prefGender, thisUser[0].prefMovies);
+    let filtered = await testFilter(usersWithoutOwn, thisUser);
+    // console.log(testie);
+    // let filtered = filterPreferences(usersWithoutOwn, thisUser[0].prefGender, thisUser[0].prefMovies);
     res.render("index.ejs", {users: filtered});
   } catch (err) {
     next(err);
@@ -82,15 +84,35 @@ function filterPreferences(users, prefgender, prefmovie) {
   //Filters the users by gender and movie preferences and returns
   //a boolean if the conditions are correct:
   return users.filter(function (user) {
-    if ((user.gender === prefgender || prefgender === "Everyone") && prefmovie === "") {
+    //Checking is the prefGender from other user is the same: (NOT WORKING YET)
+    if (((user.gender === prefgender && user.prefGender !== prefgender) || prefgender === "everyone") && prefmovie === "") {
       return true;
-    } else if ((user.gender === prefgender || prefgender === "Everyone") && prefmovie !== "") {
+    } else if ((user.gender === prefgender || prefgender === "everyone") && prefmovie !== "") {
+      //&& (user.prefGender !== prefgender || user.prefGender === "everyone")
       return user.movies.find(function (movie){
         return movie === prefmovie;
       });
     }
   });
 }
+
+function testFilter(users, loggedIn) {
+  return users.filter(function (user) {
+    if ((loggedIn[0].prefGender === user.gender && loggedIn[0].gender === user.prefGender) 
+    || (user.prefGender === "everyone" && loggedIn[0].prefGender === "everyone") 
+    || (user.prefGender === "everyone" && user.gender === loggedIn[0].prefGender) 
+    || (loggedIn[0].prefGender === "everyone" && user.prefGender === loggedIn[0].gender)) {
+      if (loggedIn[0].prefMovies === "") {
+        return true;
+      } else if (loggedIn[0].prefMovies !== "") {
+        return user.movies.find(function (movie){
+          return movie === loggedIn[0].prefMovies;
+        });
+      }
+    }
+  })
+}
+
 
 function filters(req, res) {
   //Displays the filter page:
@@ -104,7 +126,7 @@ async function postPreferences(req, res, next) {
   try {
     if (req.body.remove) {
       req.session.destroy();
-      await updatePreferences("Everyone", "");
+      await updatePreferences("everyone", "");
     } else {
       let genderPreference = slug(req.body.gender);
       let moviePreference = slug(req.body.movies);
