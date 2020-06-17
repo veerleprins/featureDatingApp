@@ -152,37 +152,36 @@ body {
 
 .filtersPage main section form fieldset {
     border: none;
-    margin-bottom: 1em;
+    margin-bottom: 2em;
 }
 
 .filtersPage main section form fieldset label {
     font-weight: 300;
 }
 
-.filtersPage main section form fieldset:nth-of-type(1) div {
+.filtersPage main section form fieldset:first-of-type div {
     display: inline-block;
     margin-right: 8%;
 }
 
-.filtersPage main section form fieldset:nth-of-type(2) label {
+.filtersPage main section form fieldset:last-of-type label {
     display: block;
     margin-bottom: 0.3em;
 }
 
-.filtersPage main section form fieldset:nth-of-type(2) input {
+.filtersPage main section form fieldset:last-of-type input {
     display: block;
 }
 
-.filtersPage main section form fieldset:nth-of-type(2) input:nth-of-type(1) {
+/* .filtersPage main section form fieldset:last-of-type input:first-of-type {
     margin-bottom: 0.5em;
-}
+} */
 
-.filtersPage main section form fieldset:nth-of-type(3) span {
+/* .filtersPage main section form fieldset:nth-of-type(3) span {
     font-size: 16px;
-    color: black;
+    color: hotpink;
     font-weight: 300;
-    ;
-}
+} */
 
 .filtersPage main section form fieldset legend {
     font-size: 1.5em;
@@ -219,6 +218,10 @@ body {
 .filtersPage main section form fieldset input[type="radio"] {
     transform: scale(1.5);
     margin-left: 0.4em;
+}
+
+.correctInput {
+  border: 2px solid #5c917f !important;
 }
 
 

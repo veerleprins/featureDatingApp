@@ -37,8 +37,8 @@
                 </fieldset>
                 <fieldset>
                     <legend>Movie genres:</legend>
-                    <div class="selectbox">
-                        <select name="movies" id="">
+                    <div class="movieGenres">
+                        <select name="movies" id="movieSelector">
                             <option value=""<%if(movie === ""){%>
                                 <%="selected"%>
                             <%}%>>--Please choose an option</option>
@@ -64,6 +64,7 @@
             </form>
         </section>
     </main>
+    <script src="scripts/client-filterpage.js"></script>
 </body>
 
 </html>

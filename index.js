@@ -61,9 +61,7 @@ async function home(req, res, next) {
     let thisUser = datingUsers.filter(getOwn);
     req.session.gender = thisUser[0].prefGender;
     req.session.movie = thisUser[0].prefMovies;
-    let filtered = await testFilter(usersWithoutOwn, thisUser);
-    // console.log(testie);
-    // let filtered = filterPreferences(usersWithoutOwn, thisUser[0].prefGender, thisUser[0].prefMovies);
+    let filtered = await checkGenderPref(usersWithoutOwn, thisUser);
     res.render("index.ejs", {users: filtered});
   } catch (err) {
     next(err);
@@ -80,39 +78,52 @@ function getOwn(user) {
   return user.id === idThisUser;
 }
 
-function filterPreferences(users, prefgender, prefmovie) {
-  //Filters the users by gender and movie preferences and returns
-  //a boolean if the conditions are correct:
-  return users.filter(function (user) {
-    //Checking is the prefGender from other user is the same: (NOT WORKING YET)
-    if (((user.gender === prefgender && user.prefGender !== prefgender) || prefgender === "everyone") && prefmovie === "") {
-      return true;
-    } else if ((user.gender === prefgender || prefgender === "everyone") && prefmovie !== "") {
-      //&& (user.prefGender !== prefgender || user.prefGender === "everyone")
-      return user.movies.find(function (movie){
-        return movie === prefmovie;
-      });
-    }
-  });
-}
+// function testFilter(users, loggedIn) {
+//   //Filters the users by gender and movie preferences and returns
+//   //a boolean if the conditions are correct for both sides:
+//   return users.filter(function (user) {
+//     if ((loggedIn[0].prefGender === user.gender && loggedIn[0].gender === user.prefGender) 
+//     || (user.prefGender === "everyone" && loggedIn[0].prefGender === "everyone") 
+//     || (user.prefGender === "everyone" && user.gender === loggedIn[0].prefGender) 
+//     || (loggedIn[0].prefGender === "everyone" && user.prefGender === loggedIn[0].gender)) {
+//       if (loggedIn[0].prefMovies === "") {
+//         return true;
+//       } else if (loggedIn[0].prefMovies !== "") {
+//         return user.movies.find(function (movie){
+//           return movie === loggedIn[0].prefMovies;
+//         });
+//       }
+//     }
+//   })
+// }
 
-function testFilter(users, loggedIn) {
+function checkGenderPref (users, loggedIn) {
+  //Filters the users by gender and movie preferences and returns
+  //a boolean if the conditions are correct for both sides:
   return users.filter(function (user) {
-    if ((loggedIn[0].prefGender === user.gender && loggedIn[0].gender === user.prefGender) 
-    || (user.prefGender === "everyone" && loggedIn[0].prefGender === "everyone") 
-    || (user.prefGender === "everyone" && user.gender === loggedIn[0].prefGender) 
-    || (loggedIn[0].prefGender === "everyone" && user.prefGender === loggedIn[0].gender)) {
-      if (loggedIn[0].prefMovies === "") {
-        return true;
-      } else if (loggedIn[0].prefMovies !== "") {
-        return user.movies.find(function (movie){
-          return movie === loggedIn[0].prefMovies;
-        });
-      }
+    if (loggedIn[0].prefGender === user.gender && loggedIn[0].gender === user.prefGender) {
+      return checkMoviePref(user, loggedIn);
+    } else if (user.prefGender === "everyone" && loggedIn[0].prefGender === "everyone") {
+      return checkMoviePref(user, loggedIn);
+    } else if (user.prefGender === "everyone" && user.gender === loggedIn[0].prefGender) {
+      return checkMoviePref(user, loggedIn);
+    } else if (loggedIn[0].prefGender === "everyone" && user.prefGender === loggedIn[0].gender) {
+      return checkMoviePref(user, loggedIn);
     }
   })
 }
 
+function checkMoviePref (user, loggedIn) {
+  //Filters the users by gender and movie preferences and returns
+  //a boolean if the conditions are correct for both sides:
+  if (loggedIn[0].prefMovies === "") {
+    return true;
+  } else if (loggedIn[0].prefMovies !== "") {
+    return user.movies.find(function (movie) {
+      return movie === loggedIn[0].prefMovies;
+    });
+  }
+}
 
 function filters(req, res) {
   //Displays the filter page:
@@ -124,6 +135,8 @@ async function postPreferences(req, res, next) {
   //updatePreferences function. After this the index page is 
   //redirected again:
   try {
+    //console.log(req.body.remove);
+
     if (req.body.remove) {
       req.session.destroy();
       await updatePreferences("everyone", "");
@@ -152,7 +165,7 @@ async function updatePreferences (genderPreference, moviePreference) {
 
 function error(req, res) {
   //Displays the error page:
- res.render("404");
+ res.status(404).render("404");
 };
 
 function connected() {
