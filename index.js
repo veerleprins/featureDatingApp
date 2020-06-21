@@ -19,13 +19,17 @@ let db = null;
 let idThisUser = 1;
 
 //Connecting to the database:
-mongo.connect(url, { useUnifiedTopology: true }, connectDB);
+mongo.connect(url, {
+  useUnifiedTopology: true
+}, connectDB);
 
 //Setting and using the middleware:
 app.set("view engine", "ejs");
 app.set("views", "view-ejs");
 app.use(express.static("static"));
-app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.urlencoded({
+  extended: true
+}));
 app.use(session({
   secret: process.env.SESSION_SECRET,
   resave: true,
@@ -57,12 +61,14 @@ async function home(req, res, next) {
   //user's preferences as a session.
   try {
     const datingUsers = await db.collection("datingUsers").find().toArray();
-    let usersWithoutOwn =  datingUsers.filter(removeOwn);
+    let usersWithoutOwn = datingUsers.filter(removeOwn);
     let thisUser = datingUsers.filter(getOwn);
     req.session.gender = thisUser[0].prefGender;
     req.session.movie = thisUser[0].prefMovies;
     let filtered = await checkGenderPref(usersWithoutOwn, thisUser);
-    res.render("index.ejs", {users: filtered});
+    res.render("index.ejs", {
+      users: filtered
+    });
   } catch (err) {
     next(err);
   }
@@ -97,7 +103,7 @@ function getOwn(user) {
 //   })
 // }
 
-function checkGenderPref (users, loggedIn) {
+function checkGenderPref(users, loggedIn) {
   //Filters the users by gender and movie preferences and returns
   //a boolean if the conditions are correct for both sides:
   return users.filter(function (user) {
@@ -113,7 +119,7 @@ function checkGenderPref (users, loggedIn) {
   })
 }
 
-function checkMoviePref (user, loggedIn) {
+function checkMoviePref(user, loggedIn) {
   //Filters the users by gender and movie preferences and returns
   //a boolean if the conditions are correct for both sides:
   if (loggedIn[0].prefMovies === "") {
@@ -127,7 +133,10 @@ function checkMoviePref (user, loggedIn) {
 
 function filters(req, res) {
   //Displays the filter page:
-  res.render("filters", {gender : req.session.gender, movie: req.session.movie});
+  res.render("filters", {
+    gender: req.session.gender,
+    movie: req.session.movie
+  });
 }
 
 async function postPreferences(req, res, next) {
@@ -151,13 +160,17 @@ async function postPreferences(req, res, next) {
   }
 }
 
-async function updatePreferences (genderPreference, moviePreference) {
+async function updatePreferences(genderPreference, moviePreference) {
   //Updates the database with the new preferences from the form:
   try {
-    await db.collection("datingUsers").updateOne(
-      {id: idThisUser},
-      {$set: { prefGender: genderPreference, prefMovies: moviePreference}}
-    );
+    await db.collection("datingUsers").updateOne({
+      id: idThisUser
+    }, {
+      $set: {
+        prefGender: genderPreference,
+        prefMovies: moviePreference
+      }
+    });
   } catch {
     next(err);
   }
@@ -165,7 +178,7 @@ async function updatePreferences (genderPreference, moviePreference) {
 
 function error(req, res) {
   //Displays the error page:
- res.status(404).render("404");
+  res.status(404).render("404");
 };
 
 function connected() {
