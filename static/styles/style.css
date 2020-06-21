@@ -477,6 +477,8 @@ input:focus {
 }
 
 @media (min-width: 1200px) {
+
+  /* Responsive: */
   .swipe main ul {
     grid-template-columns: 33% auto auto;
   }
