@@ -55,14 +55,17 @@ inputField.addEventListener('input', checkInput);
 buttonDiv[0].addEventListener('click', clicked);
 
 function items(li) {
+  //Adding a click event on each list item and when clicked,
+  //the submit button can be clicked, classes are added to 
+  //the input type and the dropdown ul is not showing.
   li.addEventListener('click', clicked, false);
 
   function clicked(e) {
     inputField.classList.remove('falseInput');
-    inputField.classList.add('correctInput');
     button.classList.remove('disabledButton');
-    inputField.value = e.target.innerHTML;
     ul.classList.remove('focussed');
+    inputField.classList.add('correctInput');
+    inputField.value = e.target.innerHTML;
     message.innerHTML = '';
   }
 }
@@ -75,8 +78,9 @@ function removeElement(element) {
 
 function addElement(parent, element, Obj, place) {
   // Function for creating a new element and adding attributes:
-  createdElement = document.createElement(element);
-  const entries = Object.entries(Obj);
+  // Source: https://weblog.west-wind.com/posts/2017/mar/04/getting-javascript-properties-for-object-maps-by-index-or-name
+  let createdElement = document.createElement(element);
+  let entries = Object.entries(Obj);
   for (const [prop, val] of entries) {
     if (entries.length !== 0) {
       createdElement.setAttribute(prop, val);
@@ -90,7 +94,8 @@ function addElement(parent, element, Obj, place) {
 }
 
 function createLi(options, parent) {
-  options.forEach(option => {
+  //Creates a li-item for each option in the options variable:
+  options.forEach(function (option) {
     let li = document.createElement('li');
     var text = document.createTextNode(option);
     li.appendChild(text);
@@ -99,18 +104,20 @@ function createLi(options, parent) {
 }
 
 function focusInput() {
+  //Toggles between showing and not showing the ul:
   ul.classList.toggle('focussed');
 }
 
 function checkInput(e) {
-  //https://www.youtube.com/watch?v=In0nB0ABaUk
-  //https://www.udemy.com/course/modern-javascript/learn/lecture/9862416#overview
+  //Checks the input and displays the right li-items and styling:
+  //Source: https://www.youtube.com/watch?v=In0nB0ABaUk
+  //Source: https://www.udemy.com/course/modern-javascript/learn/lecture/9862416#overview
   inputField.classList.remove('correctInput');
   inputField.classList.remove('falseInput');
   let userInput = e.target.value.toLowerCase();
   message.innerHTML = '';
 
-  listItems.forEach(li => {
+  listItems.forEach(function (li) {
     let text = li.innerHTML.toLowerCase();
     let found = text.indexOf(userInput);
     if (userInput === '') {
@@ -137,6 +144,7 @@ function checkInput(e) {
 }
 
 function clicked() {
+  // Checks if button is disabled and then adds a innerHTML:
   if (button.classList.contains('disabledButton')) {
     message.innerHTML = 'Please type a movie from the list.';
   }
