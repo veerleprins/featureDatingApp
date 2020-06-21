@@ -104,6 +104,29 @@ The structure of the database is shown in the images below. The first image show
 - Heroku. (2020, March 31). Heroku Error Codes | Heroku Dev Center. Retrieved April 5, 2020, from https://devcenter.heroku.com/articles/error-codes
 - The Coding Train. (2019, June 28). 3.5 Web Application Deployment (Glitch and Heroku) - Working with Data and APIs in JavaScript [Video file]. Retrieved from https://www.youtube.com/watch?v=Rz886HkV1j4&list=PLRqwX-V7Uu6YxDKpFzf_2D84p0cyk4T7X&index=20
 - Esterling Accime. (2019, November 18). Connect MongoDB Atlas to your Heroku application [Video file]. Retrieved from https://www.youtube.com/watch?v=imR9LlbG3pU
+- Tolulope, K. (2018, April 24). Understanding Hoisting and Scoping in Javascript - Backticks & Tildes. Retrieved April 10, 2020, from https://medium.com/backticks-tildes/understanding-hoisting-and-scoping-in-javascript-39ea7b41e31
+- Engel, D. (2019, June 11). Scope vs. Context in JavaScript - Better Programming. Retrieved April 10, 2020, from https://medium.com/better-programming/scope-vs-context-in-javascript-b31818f58558
+- Tsai, M. (2018, November 27). JavaScript: Introduction to Scope (function scope, block scope). Retrieved May 16, 2020, from https://dev.to/sandy8111112004/javascript-introduction-to-scope-function-scope-block-scope-d11
+- Witkowski, M. (2017, 6 oktober). The many faces of this. Geraadpleegd op 5 mei 2020, van https://blog.pragmatists.com/the-many-faces-of-this-in-javascript-5f8be40df52e
+- Patro, N. C. (2018, 1 februari). JavaScript — all about “this” keyword. Geraadpleegd op 20 mei 2020, van https://codeburst.io/all-about-this-and-new-keywords-in-javascript-38039f71780c
+- Gisder-Dubé, L. (2018, 21 december). How to understand the keyword this and context in JavaScript. Geraadpleegd op 7 juni 2020, van https://www.freecodecamp.org/news/how-to-understand-the-keyword-this-and-context-in-javascript-cd624c6b74b8/
+- P. (2018, 30 januari). Understanding the “this” Keyword in JavaScript - Better Programming. Geraadpleegd op 7 juni 2020, van https://medium.com/better-programming/understanding-the-this-keyword-in-javascript-cb76d4c7c5e8#:%7E:text=%E2%80%9Cthis%E2%80%9D%20Refers%20to%20an%20Invoker,contains%20the%20method%20being%20invoked
+- Sandhu, S. (2018, 27 augustus). What is Hoisting in JavaScript? - JavaScript In Plain English. Geraadpleegd op 5 juni 2020, van https://medium.com/javascript-in-plain-english/https-medium-com-javascript-in-plain-english-what-is-hoisting-in-javascript-a63c1b2267a1
+- Morelli, B. (2017, 9 oktober). JavaScript: What is Hoisting? Geraadpleegd op 9 juni 2020, van https://codeburst.io/javascript-what-is-hoisting-dfa84512dd28
+- Arora, S. (2018, 10 september). Hoisting in Modern JavaScript — let, const, and var. Geraadpleegd op 9 juni 2020, van https://blog.bitsrc.io/hoisting-in-modern-javascript-let-const-and-var-b290405adfda
+- Deb, S. (2019, 27 november). What are Closures in JavaScript & How Do They Work? Geraadpleegd op 10 juni 2020, van https://www.edureka.co/blog/closures-in-javascript/
+- Arora, S. (2018b, 24 september). Understanding Closures in JavaScript. Geraadpleegd op 10 juni 2020, van https://blog.bitsrc.io/a-beginners-guide-to-closures-in-javascript-97d372284dda
+- Web Dev Simplified. (2019). Learn Closures In 7 Minutes [Videobestand]. YouTube. Geraadpleegd van https://www.youtube.com/watch?v=3a0I8ICR1Vg
+- Gustafson, A. (2008, 7 oktober). Understanding Progressive Enhancement. Geraadpleegd op 14 juni 2020, van https://alistapart.com/article/understandingprogressiveenhancement/
+- Matuzovic, M. (2020, 28 april). The beauty of Progressive Enhancement. Geraadpleegd op 14 juni 2020, van https://www.matuzo.at/blog/beauty-of-progressive-enhancement/
+- w3schools. (z.d.). HTML DOM Event Object. Geraadpleegd 20 juni 2020, van https://www.w3schools.com/jsref/dom_obj_event.asp
+- Mead, A. (z.d.). Attention Required! | Cloudflare. Udemy. Geraadpleegd 1 juni 2020, van https://www.udemy.com/join/login-popup/?next=/course/modern-javascript/learn/lecture/9862416#overview
+- Web Dev Simplified. (2019, 18 juni). JavaScript Form Validation [Video]. YouTube. https://www.youtube.com/watch?v=In0nB0ABaUk
+- StackOverflow. (2011, 5 mei). Check if an element contains a class in JavaScript? https://stackoverflow.com/questions/5898656/check-if-an-element-contains-a-class-in-javascript
+- StackOverflow. (2013, 29 november). How to trigger a click event on disabled elements. https://stackoverflow.com/questions/20294867/how-to-trigger-a-click-event-on-disabled-elements?rq=1
+- The Net Ninja. (2017, 7 september). JavaScript DOM Tutorial #16 - Custom Search Filter [Video]. YouTube. https://www.youtube.com/watch?v=3NG8zy0ywIk
+- Jeep, J. (2019, 16 december). Accessing an Object’s Keys, Values, and Entries in JavaScript. Medium. https://medium.com/better-programming/accessing-an-objects-keys-values-and-entries-in-javascript-e7bb5d33d11c
+- Strahl, R. (2017, 4 maart). Getting JavaScript Properties for Object Maps by Index or Name. Rick Strahl’s Web Log. https://weblog.west-wind.com/posts/2017/mar/04/getting-javascript-properties-for-object-maps-by-index-or-name
 
 
 ## Licence :lock:
