@@ -13,24 +13,8 @@ module.exports = {
     "parserOptions": {
         "ecmaVersion": 2018
     },
-    'rules': {
-        'indent': [
-            'warn',
-            1
-        ],
-        'linebreak-style': [
-            'error',
-            'unix'
-        ],
-        'quotes': [
-            'error',
-            'single'
-        ],
-        'semi': [
-            'error', 'always'
-        ],
-        'indent': [
-            false, 'spaces', 2
-        ]
+    "rules": {
+        "semi": ['error', 'always'],
+        "indent": [false, 'spaces', 2]
     }
 };
