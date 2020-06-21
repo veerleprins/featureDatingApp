@@ -18,9 +18,9 @@
                         <a href="" class="info"><img src="images/info.svg" alt=""></a>
 
                         <% if (users[i].movies[1] != undefined) {%>
-                            <p>#<%= users[i].movies[1] %></p>
+                            <p><%= users[i].movies[1] %> movies</p>
                             <% } %> 
-                            <p>#<%= users[i].movies[0] %></p>
+                            <p><%= users[i].movies[0] %> movies</p>
                         <figcaption>
                             <h2><%= users[i].name %> , <%= users[i].age %> </h2>
                             <h3> <%= users[i].location %> </h3>

@@ -20,7 +20,7 @@
                         <input type="radio" name="gender" id="genderMan" value="man" <%if(gender === "man"){%>
                             <%="checked"%>
                         <%}%>>
-                        <label for="genderMen">Men</label>
+                        <label for="genderMan">Men</label>
                     </div>
                     <div>
                         <input type="radio" name="gender" id="genderWoman" value="woman" <%if(gender === "woman"){%>
@@ -32,34 +32,40 @@
                         <input type="radio" name="gender" id="genderEveryone" value="everyone" <%if(gender === "everyone" || gender === undefined){%>
                             <%="checked"%>
                         <%}%>>
-                        <label for="genderAnything">Everyone</label>
+                        <label for="genderEveryone">Everyone</label>
                     </div>
                 </fieldset>
                 <fieldset>
                     <legend>Movie genres:</legend>
                     <div class="movieGenres">
+                        <label for="movies">Insert your movie preference:</label>
                         <select name="movies" id="movieSelector">
                             <option value=""<%if(movie === ""){%>
                                 <%="selected"%>
-                            <%}%>>--Please choose an option</option>
-                            <option value="actionMovies"<%if(movie === "actionMovies"){%>
+                            <%}%>>--Choose an option</option>
+                            <option value="action"<%if(movie === "action"){%>
                                 <%="selected"%>
-                            <%}%>>#actionMovies</option>
-                            <option value="adventureMovies" <%if(movie === "adventureMovies"){%>
+                            <%}%>>Action</option>
+                            <option value="adventure" <%if(movie === "adventure"){%>
                                 <%="selected"%>
-                            <%}%>>#adventureMovies</option>
-                            <option value="comedyMovies" <%if(movie === "comedyMovies"){%>
+                            <%}%>>Adventure</option>
+                            <option value="comedy" <%if(movie === "comedy"){%>
                                 <%="selected"%>
-                            <%}%>>#comedyMovies</option>
-                            <option value="horrorMovies" <%if(movie === "horrorMovies"){%>
+                            <%}%>>Comedy</option>
+                            <option value="horror" <%if(movie === "horror"){%>
                                 <%="selected"%>
-                            <%}%>>#horrorMovies</option>
+                            <%}%>>Horror</option>
                         </select>
                     </div>
                 </fieldset>
-                <button id="Submit">
+                <div class="buttonDiv">
+                    <button id="Submit">
+                        Save preferences
+                    </button>
+                </div>
+                <!-- <button id="Submit">
                     Save preferences
-                </button>
+                </button> -->
                 <input id="remove" type="submit" name="remove" value="Remove preferences">
             </form>
         </section>

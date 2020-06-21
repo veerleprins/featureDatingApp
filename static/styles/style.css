@@ -111,6 +111,9 @@ body {
 *******************************************************************************/
 
 .filtersPage main {
+  position: relative;
+  height: 85vh;
+  width: 90vw;
     margin: 0em 1em;
 }
 
@@ -118,36 +121,47 @@ body {
     margin: 0.5em 0em;
 }
 
-.filtersPage main section form button {
-    /* Save preferences button: */
-    border-radius: 0.5em;
-    font-size: 1em;
-    font-weight: 400;
-    color: white;
-    background-color: #FF8484;
-    box-shadow: 1px 1px 2px rgb(49, 49, 49);
-    border: none;
-    margin: 0 auto;
-    position: fixed;
-    bottom: 6em;
-    padding: 0.8em 1em;
-    width: 90%;
+.filtersPage main section form .buttonDiv {
+  width: 100%;
+  height: auto;
+  position: absolute;
+  bottom: 6em;
+}
+
+.filtersPage main section form div button {
+  /* Save preferences button: */
+  display: block;
+  width: 100%;
+  /* position: absolute;
+  bottom: 6em; */
+  border-radius: 0.5em;
+  font-size: 1em;
+  font-weight: 400;
+  color: white;
+  background-color: #FF8484;
+  box-shadow: 1px 1px 2px rgb(49, 49, 49);
+  border: none;
+  /* position: absolute; */
+  /* bottom: 6em; */
+  padding: 0.8em 1em;
+  cursor: pointer;
 }
 
 #remove {
-    /* Save preferences button: */
-    border-radius: 0.5em;
-    font-size: 1em;
-    font-weight: 400;
-    color: #FF8484;
-    background-color: White;
-    box-shadow: none;
-    border: 1px solid #FF8484;
-    margin: 0 auto;
-    position: fixed;
-    bottom: 2em;
-    padding: 0.8em 1em;
-    width: 90%;
+  /* Remove preferences button */
+  display: block;
+  width: 100%;
+  border-radius: 0.5em;
+  font-size: 1em;
+  font-weight: 400;
+  color: #FF8484;
+  background-color: White;
+  box-shadow: none;
+  border: 1px solid #FF8484;
+  position: absolute;
+  bottom: 2em;
+  padding: 0.8em 1em;
+  cursor: pointer;
 }
 
 .filtersPage main section form fieldset {
@@ -157,6 +171,7 @@ body {
 
 .filtersPage main section form fieldset label {
     font-weight: 300;
+    cursor: pointer;
 }
 
 .filtersPage main section form fieldset:first-of-type div {
@@ -171,11 +186,12 @@ body {
 
 .filtersPage main section form fieldset:last-of-type input {
     display: block;
+    width: 95%;
 }
 
-/* .filtersPage main section form fieldset:last-of-type input:first-of-type {
-    margin-bottom: 0.5em;
-} */
+.filtersPage main section form fieldset:first-of-type div input {
+    margin-right: 3px;
+}
 
 /* .filtersPage main section form fieldset:nth-of-type(3) span {
     font-size: 16px;
@@ -218,10 +234,92 @@ body {
 .filtersPage main section form fieldset input[type="radio"] {
     transform: scale(1.5);
     margin-left: 0.4em;
+    cursor: pointer;
 }
 
 .correctInput {
   border: 2px solid #5c917f !important;
+}
+
+.falseInput {
+  border: 2px solid #A22522 !important;
+}
+.errorMessage {
+  margin-bottom: 20px;
+  color: #A22522;
+}
+
+.disabledButton {
+  background-color: #bda9a9 !important;
+  pointer-events: none;
+}
+
+.optionList {
+  background-color: white;
+  border-radius: 0px 0px 5px 5px;
+  width: 98%;
+  margin: 0 auto;
+  max-height: 130px;
+  overflow-y: scroll;
+  box-shadow: 1px 2px 3px 0px #a09f9f;
+  border: 1px solid #DCABA7;
+  border-top: 0;
+  display: none;
+  /* visibility: hidden; */
+}
+
+.optionList li {
+  list-style-type: none;
+  padding: 10px 0px 10px 10px;
+  border-bottom: 1px solid #e2e2e2;
+  cursor: pointer;
+  /* opacity: 0; */
+}
+
+.focussed {
+  opacity: 1;
+  display: block;
+  /* visibility: visible; */
+}
+
+.notFocussed {
+  opacity: 0;
+  display: none;
+}
+
+.optionList li:last-of-type {
+  border-bottom: none;
+}
+
+@media (min-width: 568px) {
+  .filtersPage main {
+    width: 70%;
+    margin: 0 auto;
+  }
+}
+
+@media (min-width: 768px) {
+  .filtersPage header {
+    height: 5vh;
+  }
+  .filtersPage main {
+    width: 40%;
+  }
+  .filtersPage main section form div button {
+    width: 100%;
+    display: block;
+  }
+  .filtersPage #remove {
+    width: 100%;
+    display: block;
+  }
+}
+
+@media (min-width: 1068px) {
+  .filtersPage main {
+    width: 30%;
+  }
+
 }
 
 
@@ -235,6 +333,10 @@ body {
 
 .swipe .noUsersError {
   box-shadow: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 .swipe .noUsersError h2 {
@@ -245,9 +347,9 @@ body {
 }
 
 .swipe .noUsersError img {
-  width: 35%;
-  height: auto;
-  margin: 0% 30%;
+  width: 150px;
+  height: 150px;
+  margin: 0 auto;
 }
 
 .swipe .noUsersError p {
@@ -266,10 +368,10 @@ body {
     box-shadow: 1px 1px 2px rgb(49, 49, 49);
     border: none;
     display: flex;
-    width: 80vw;
+    width: 60%;
     justify-content: center;
     margin: 0 auto;
-    margin-top: 5em;
+    /* margin-top: 5em; */
     padding: 0.8em 1em;
 }
 
@@ -373,6 +475,23 @@ body {
     border-radius: 50%;
     background-color: transparent;
     border: none;
+}
+
+@media (min-width: 768px) {
+  .swipe main ul {
+    display: grid;
+    grid-template-columns: 50% auto;
+    column-gap: 40px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .swipe main ul {
+    grid-template-columns: 33% auto auto;
+  }
+  .swipe main ul li section{
+    width: 100%;
+  }
 }
 
 /******************************************************************************

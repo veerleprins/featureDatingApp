@@ -1,25 +1,56 @@
 // Global initializations:
-let selectField, movieGenres, optionList, section;
-let dataListInput, message;
+let selectField, 
+    movieGenres, 
+    optionList, 
+    section, 
+    buttonDiv,
+    message, 
+    button, 
+    inputAttributes, 
+    ul, 
+    listItems;
 
 // Global declarations:
 selectField = document.querySelector('select');
+button = document.getElementById('Submit');
+buttonDiv = Array.from(document.getElementsByClassName('buttonDiv'));
 section = document.querySelector('section');
 movieGenres = document.getElementsByClassName('movieGenres');
-optionList = ['actionMovies', 'adventureMovies', 'comedyMovies', 'horrorMovies'];
+
+optionList = ['action', 'adventure', 'animation', 'comedy', 'crime', 'disney', 'drama', 'fantasy', 'historical', 'horror',  'romance', 'science', 'thriller', 'western'];
+inputAttributes = {'name' : 'movies','placeholder': 'Movie genre', 'autocomplete': 'off', 'id': 'movieSelector'};
 
 // Calling the functions:
 removeElement(selectField);
-addElement(movieGenres[0], 'datalist', optionList);
-create('p', 'errorMessage', section);
+addElement(movieGenres[0], 'input', inputAttributes, 'normal');
+addElement(section, 'p', {'class': 'errorMessage'}, 'before');
+addElement(movieGenres[0], 'ul', {'class' : 'optionList', 'id' : 'list'}, 'normal');
 
-//New global declaration:
-dataListInput = document.querySelector('#movieSelector');
+
+//Global declaration after removing and adding elements:
+inputField = document.querySelector('#movieSelector');
 message = document.querySelector('.errorMessage');
-console.log(message);
+ul = document.getElementById('list');
+createLi(optionList, ul);
+listItems = Array.from(document.getElementsByTagName('li'));
 
-//Add event listeners:
-dataListInput.addEventListener('change', checkInput);
+//Adding event listeners:
+listItems.forEach(items);
+inputField.addEventListener('focusin', focusInput);
+inputField.addEventListener('input', checkInput);
+buttonDiv[0].addEventListener('click', clicked);
+
+function items(li) {
+  li.addEventListener('click', clicked, false);
+  function clicked (e) {
+    inputField.classList.remove('falseInput');
+    inputField.classList.add('correctInput');
+    button.classList.remove('disabledButton');
+    inputField.value = e.target.innerHTML;
+    ul.classList.remove('focussed');
+    message.innerHTML = '';
+  }
+}
 
 function removeElement (element) {
   // Removing the parentNode of the given element:
@@ -27,59 +58,71 @@ function removeElement (element) {
 }
 
 
-function addElement(parent, element, options) {
-  // Creating the datalist
-  let i, len, dl, label, labeltext, input;
-  dl = document.createElement(element);
-  i = 0;
-  len = options.length;
-  label = document.createElement('label');
-  label.setAttribute('for','movieSelector');
-  labeltext = document.createTextNode('Choose your movie preference from the list: ');
-  label.appendChild(labeltext);
-
-  input = document.createElement('input');
-  input.setAttribute('list', 'movieSelector');
-  input.setAttribute('name', 'movies');
-  input.setAttribute('placeholder', 'Type your movie');
-  input.id = 'movieSelector';
-
-  dl.id = 'dataList';
-  dl.name = 'movies';
-  options.forEach(option => {
-    let htmlOption = document.createElement('option');
-    htmlOption.value = option;
-    dl.appendChild(htmlOption);
-  });
-  parent.appendChild(label);
-  parent.appendChild(dl);
-  parent.appendChild(input);
+function addElement(parent, element, Obj, place) {
+  // Function for creating a new element and adding attributes:
+  createdElement = document.createElement(element);
+  const entries = Object.entries(Obj);
+  for(const [prop, val] of entries) {
+    if (entries.length !== 0) {
+      createdElement.setAttribute(prop, val);
+    }
+  }
+  if (place === 'before') {
+    parent.insertBefore(createdElement, parent.firstChild);
+  } else if (place === 'normal') {
+    parent.appendChild(createdElement);
+  }
 }
 
-function create (el, className, place) {
-  createdEl = document.createElement(el);
-  createdEl.classList.add('errorMessage');
-  place.insertBefore(createdEl, place.firstChild);
+function createLi (options, parent) {
+  options.forEach(option => {
+    let li = document.createElement('li');
+    var text = document.createTextNode(option);
+    li.appendChild(text);
+    parent.appendChild(li);
+  })
+}
+
+function focusInput () {
+  ul.classList.toggle('focussed');
 }
 
 function checkInput (e) {
   //https://www.youtube.com/watch?v=In0nB0ABaUk
   //https://www.udemy.com/course/modern-javascript/learn/lecture/9862416#overview
-  if (optionList.includes(e.target.value)) {
-    console.log("YES");
-    dataListInput.classList.add('correctInput');
-    message.innerHTML = "This input is correct";
+  inputField.classList.remove('correctInput');
+  inputField.classList.remove('falseInput');
+  let userInput = e.target.value.toLowerCase();
+  message.innerHTML = '';
+
+  listItems.forEach(li => {
+    let text = li.innerHTML.toLowerCase();
+    let found = text.indexOf(userInput);
+    if (userInput === '') {
+      li.style.display = 'block';
+    } else if (found === -1) {
+      li.style.display = 'none';
+    } else {
+      li.style.display = 'block';
+    }
+  })
+
+
+  if (optionList.includes(userInput)) {
+    inputField.classList.add('correctInput');
+    button.classList.remove('disabledButton');
+  } else if (userInput === '') {
+    button.classList.remove('disabledButton');
+    inputField.classList.remove('correctInput');
+    inputField.classList.remove('falseInput');
   } else {
-    console.log("fuckkkk");
+    inputField.classList.add('falseInput');
+    button.classList.add('disabledButton');
   }
 }
 
-
-
-
-
-
-
-// - Geen display block/none gebruiken - check
-// - Name element van input in select button wijzigen, of op non-actief zetten voor je backend
-// - Op een nette manier elementen via JavaScript inladen (appendChild etc etc) - check
+function clicked () {
+  if (button.classList.contains('disabledButton')) {
+    message.innerHTML = 'Please type a movie from the list.';
+  }
+}
